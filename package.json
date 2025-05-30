@@ -12,7 +12,8 @@
         "readline-sync": "^1.4.10",
         "tsx": "^4.19.4",
         "typescript": "^5.8.3",
-        "typescript-eslint": "^8.32.1"
+        "typescript-eslint": "^8.32.1",
+        "esbuild": "^0.25.5"
     },
     "scripts": {
         "test": "npm run classtest",
@@ -22,7 +23,5 @@
         "classtest": "npx tsx classroom/test.ts"
     },
     "dependencies": {
-        "diff": "^8.0.2",
-        "esbuild": "^0.25.5"
     }
 }
