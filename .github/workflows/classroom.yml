@@ -1,30 +1,34 @@
-name: Autograding Tests
-'on':
-- push
-- repository_dispatch
-permissions:
-  checks: write
-  actions: read
-  contents: read
+name: Autograding Tests with JSON Grader
+
+on:
+  push:
+  workflow_dispatch:
+
 jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Validação Tarefa Strings
-      id: validacao-tarefa-strings
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Validação Tarefa Strings
-        setup-command: ''
-        command: npm test
-        timeout: 10
-        max-score: 100
-    - name: Autograding Reporter
-      uses: classroom-resources/autograding-grading-reporter@v1
-      env:
-        VALIDACAO-TAREFA-STRINGS_RESULTS: "${{steps.validacao-tarefa-strings.outputs.result}}"
-      with:
-        runners: validacao-tarefa-strings
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt # Se o seu script de teste tiver dependências
+
+      - name: Run JSON Graded Tests
+        uses: classroom-resources/autograding-json-grader@v1
+        with:
+          test-name: "Avaliação Detalhada do Projeto"
+          # setup-command: "echo 'Starting JSON test setup...'" # Opcional, se precisar de setup antes do comando principal
+          command: "python grade_submission.py" # Seu script que gera o JSON
+          timeout: 10
+          max-score: 100 # A pontuação total máxima para todos os sub-testes no JSON
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
