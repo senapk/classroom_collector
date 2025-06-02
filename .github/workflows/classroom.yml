@@ -26,7 +26,7 @@ jobs:
         with:
           test-name: "Avaliação Detalhada do Projeto"
           # setup-command: "echo 'Starting JSON test setup...'" # Opcional, se precisar de setup antes do comando principal
-          command: "python grade_submission.py" # Seu script que gera o JSON
+          command: "python classroom/grade_submission.py" # Seu script que gera o JSON
           timeout: 10
           max-score: 100 # A pontuação total máxima para todos os sub-testes no JSON
 

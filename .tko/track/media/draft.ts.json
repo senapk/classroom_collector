@@ -2,7 +2,11 @@
     "patches": [
         {
             "label": "2025-05-29_04-47-19",
-            "content": "const input = () => \"\"; // MODO_TESTE\nexport {};\n\nfunction main() {\n    console.log(\"qxcode\");\n}\nmain();\n"
+            "content": "@@ -69,83 +69,30 @@\n     \n-let a = +input()%0A    let b = +input()%0A    console.log(((a+b)/2).toFixed(1))\n+console.log(%22qxcode%22);\n %0A%7D%0Am\n"
+        },
+        {
+            "label": "2025-06-02_09-19-50",
+            "content": "const input = () => \"\"; // MODO_TESTE\nexport {};\n\nfunction main() {\n    let a = +input()\n    let b = +input()\n    console.log(((a+b)/2).toFixed(1))\n}\nmain();\n"
         }
     ]
 }

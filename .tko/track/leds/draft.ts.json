@@ -2,7 +2,23 @@
     "patches": [
         {
             "label": "2025-05-29_04-47-20",
-            "content": "const input = () => \"\"; // MODO_TESTE\nexport {};\n\nfunction main() {\n    console.log(\"qxcode\");\n}\nmain();\n"
+            "content": "@@ -56,570 +56,43 @@\n ion \n-qtd_leds(v: number): number %7B%0A    if (v == 1) return 2;%0A    if (v == 2) return 5;%0A    if (v == 3) return 5;%0A    if (v == 4) return 4;%0A    if (v == 5) return 5;%0A    if (v == 6) return 6;%0A    if (v == 7) return 3;%0A    if (v == 8) return 7;%0A    if (v == 9) return 6;%0A    return 6;%0A%7D%0A%0Afunction main() %7B%0A    let qtd = +input();%0A    for (let i = 0; i %3C qtd; i++) %7B%0A        let painel: string = input();%0A        let count = 0;%0A        for (let j = 0; j %3C painel.length; j++) %7B%0A            count += qtd_leds(Number(painel%5Bj%5D))%0A        %7D%0A        console.log(count);%0A    %7D\n+main() %7B%0A    console.log(%22qxcode%22);\n %0A%7D%0Am\n"
+        },
+        {
+            "label": "2025-06-01_11-28-40",
+            "content": "@@ -610,17 +610,8 @@\n ount\n-, %22 leds%22\n );%0A \n"
+        },
+        {
+            "label": "2025-06-01_11-28-58",
+            "content": "@@ -609,16 +609,17 @@\n count, %22\n+ \n leds%22);%0A\n"
+        },
+        {
+            "label": "2025-06-01_11-29-13",
+            "content": "@@ -309,25 +309,25 @@\n = 9) return \n-5\n+6\n ;%0A    return\n"
+        },
+        {
+            "label": "2025-06-01_11-29-26",
+            "content": "const input = () => \"\"; // MODO_TESTE\nexport {};\n\nfunction qtd_leds(v: number): number {\n    if (v == 1) return 2;\n    if (v == 2) return 5;\n    if (v == 3) return 5;\n    if (v == 4) return 4;\n    if (v == 5) return 5;\n    if (v == 6) return 6;\n    if (v == 7) return 3;\n    if (v == 8) return 7;\n    if (v == 9) return 5;\n    return 6;\n}\n\nfunction main() {\n    let qtd = +input();\n    for (let i = 0; i < qtd; i++) {\n        let painel: string = input();\n        let count = 0;\n        for (let j = 0; j < painel.length; j++) {\n            count += qtd_leds(Number(painel[j]))\n        }\n        console.log(count, \"leds\");\n    }\n}\nmain();\n"
         }
     ]
 }

@@ -1,11 +1,9 @@
 {
-  "name": "Template with Installation Script",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
-    }
-  },
+    "name": "Universal Environment",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pipx && pipx ensurepath && pipx install tko && npm install -g npm@latest",
+    // Adicionado npm install -g npm@latest para garantir a versão mais recente do npm
+
   "customizations": {
     "vscode": {
       "settings": {
@@ -19,6 +17,5 @@
         "esbenp.prettier-vscode"
       ]
     }
-  },
-  "postCreateCommand": "bash .devcontainer/install.sh"
+  }
 }
