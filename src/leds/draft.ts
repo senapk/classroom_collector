@@ -10,7 +10,7 @@ function qtd_leds(v: number): number {
     if (v == 6) return 6;
     if (v == 7) return 3;
     if (v == 8) return 7;
-    if (v == 9) return 5;
+    if (v == 9) return 6;
     return 6;
 }
 

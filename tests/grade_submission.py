@@ -4,8 +4,8 @@
 from subprocess import run, PIPE
 import json
 
-class Test:
-    def __init__(self, test_name: str, max_score: int, partial: bool = True):
+class MyTest:
+    def __init__(self, test_name: str, max_score: int = 10, partial: bool = True):
         self.test_name: str = test_name
         self.output: str = "" # attempts, and time spended
         self.status: str = "failed"
@@ -24,6 +24,7 @@ class Test:
                 self.set_passed()
             else:
                 self.set_failed()
+        return self
 
     def set_failed(self):
         self.status = "failed"
@@ -33,6 +34,23 @@ class Test:
         self.status = "passed"
         return self
     
+    def run(self):
+        result = run(["tko", "-m", "eval", '-ts', f"src/{self.test_name}"], stdout=PIPE, stderr=PIPE, text=True)
+        print(result.stdout, result.stderr)
+        if result.returncode != 0:
+            self.set_failed()
+            self.output = result.stdout + result.stderr
+        else:
+            line = result.stdout.splitlines()[0]
+            if line.endswith("%"):
+                self.output = line
+                self.set_percentage(line.split(" ")[-1])
+            else:
+                self.set_failed()
+                self.output = result.stdout
+        return self
+
+
     def to_dict(self) -> dict[str, str | int | bool]:
         return {
             "test_name": self.test_name,
@@ -43,33 +61,21 @@ class Test:
             "partial": self.partial
         }
 
-class TestList:
+class MyTestList:
     def __init__(self):
-        self.tests: list[Test] = []
+        self.tests: list[MyTest] = []
 
     def add_test(self, label: str, max_score: int, partial: bool = True):
-        test = Test(label, max_score, partial)
-        # run comand "tko run src/label" and collect the output
-        result = run(["tko", "-m", "eval", '-tsc', f"src/{label}"], stdout=PIPE, stderr=PIPE, text=True)
+        test = MyTest(label, max_score, partial)
         self.tests.append(test)
-        if result.returncode != 0:
-            test.set_failed()
-            test.output = result.stdout + result.stderr
-        else:
-            line = result.stdout.splitlines()[0]
-            if line.endswith("%"):
-                test.output = line
-                test.set_percentage(line.split(" ")[-1])
-            else:
-                test.set_failed()
-                test.output = result.stdout
+        test.run()
 
     def to_json(self) -> str:
         return json.dumps([test.to_dict() for test in self.tests], indent=4)
 
 
 def main():
-    test_list = TestList()
+    test_list = MyTestList()
     test_list.add_test("leds", 10)
     test_list.add_test("media", 10)
     test_list.add_test("traficantes", 30)

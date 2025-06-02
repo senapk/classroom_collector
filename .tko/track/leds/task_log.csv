@@ -41,3 +41,12 @@ time:2025-06-02 09:21:13, type:TEST, key:leds, c:50, e:111, att:4, lines:28
 time:2025-06-02 09:22:08, type:TEST, key:leds, c:50, e:112, att:4, lines:28
 time:2025-06-02 09:32:55, type:TEST, key:leds, c:50, e:123, att:4, lines:28
 time:2025-06-02 09:34:09, type:TEST, key:leds, c:50, e:124, att:4, lines:28
+time:2025-06-02 10:39:17, type:TEST, key:leds, c:50, e:124, att:4, lines:28
+time:2025-06-02 10:39:37, type:TEST, key:leds, c:100, e:125, att:4, lines:28
+time:2025-06-02 10:39:37, type:SIZE, key:leds, e:125, att:5, lines:28
+time:2025-06-02 10:45:38, type:TEST, key:leds, c:100, e:131, att:5, lines:28
+time:2025-06-02 10:45:51, type:TEST, key:leds, c:100, e:131, att:5, lines:28
+time:2025-06-02 10:51:36, type:TEST, key:leds, c:100, e:136, att:5, lines:28
+time:2025-06-02 10:52:29, type:TEST, key:leds, c:100, e:137, att:5, lines:28
+time:2025-06-02 10:53:24, type:TEST, key:leds, c:100, e:138, att:5, lines:28
+time:2025-06-02 10:53:57, type:TEST, key:leds, c:100, e:139, att:5, lines:28
