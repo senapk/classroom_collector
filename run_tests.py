@@ -2,92 +2,71 @@
 # -*- coding: utf-8 -*-
 
 from subprocess import run, PIPE
-import json
-import argparse
+import os
 
 class MyTest:
-    def __init__(self, test_name: str, max_score: int = 10, partial: bool = True):
-        self.test_name: str = test_name
-        self.output: str = "" # attempts, and time spended
-        self.status: str = "failed"
-        self.points_awarded: int = 0
-        self.max_score: int = max_score
-        self.partial: bool = partial
+    def __init__(self, label: str, weight: int = 1, partial: bool = True):
+        self.label: str = label
+        self.awarded: int = 0        # Percentage score (0-100)
+        self.weight: int = weight    # Used to calculate the weighted mean
+        self.partial: bool = partial # Whether the test can be partially scored
 
     def set_percentage(self, text: str):
         if text[-1] == "%":
             value = int(text[:-1])
             if self.partial:
-                self.points_awarded = int((value * self.max_score) / 100)
+                self.awarded = value
             else:
-                self.points_awarded = self.max_score if value == 100 else 0
-            if self.points_awarded == self.max_score:
-                self.set_passed()
-            else:
-                self.set_failed()
+                self.awarded = value if value == 100 else 0
         return self
 
-    def set_failed(self):
-        self.status = "failed"
-        return self
-
-    def set_passed(self):
-        self.status = "passed"
-        return self
     
     def run(self):
-        result = run(["tko", "-m", "eval", '-ts', f"src/{self.test_name}"], stdout=PIPE, stderr=PIPE, text=True)
-        print(result.stdout, result.stderr)
+        grade_file = "result.txt"
+        result = run(["tko", "eval", '-ts', '-r', grade_file, f"src/{self.label}"], stderr=PIPE, text=True)
         if result.returncode != 0:
-            self.set_failed()
-            self.output = result.stdout + result.stderr
-        else:
-            line = result.stdout.splitlines()[0]
-            if line.endswith("%"):
-                self.output = line
-                self.set_percentage(line.split(" ")[-1])
-            else:
-                self.set_failed()
-                self.output = result.stdout
+           print(result.stderr)
+        if result.returncode == 0:
+            if os.path.isfile(grade_file):
+                percent = open(grade_file, "r").read().splitlines()[0].strip()
+                self.set_percentage(percent)
+                os.remove(grade_file)
         return self
 
-
-    def to_dict(self) -> dict[str, str | int | bool]:
-        return {
-            "test_name": self.test_name,
-            "output": self.output,
-            "status": self.status,
-            "points_awarded": self.points_awarded,
-            "max_score": self.max_score,
-            "partial": self.partial
-        }
 
 class MyTestList:
     def __init__(self):
         self.tests: list[MyTest] = []
 
-    def add_test(self, label: str, max_score: int, partial: bool = True):
-        test = MyTest(label, max_score, partial)
+    def add_test(self, label: str, weight: int, partial: bool = True):
+        test = MyTest(label, weight, partial)
         self.tests.append(test)
         test.run()
 
-    def to_json(self) -> str:
-        return json.dumps([test.to_dict() for test in self.tests], indent=4)
+    def calc_grade(self) -> int:
+        total_weight = sum(test.weight for test in self.tests)
+        max_label_len = max(len(test.label) for test in self.tests)
+        grade = 0
+        print(f"{'Test':<{max_label_len}}| awarded | weight | reached")
+        for test in self.tests:
+            test.weight = test.weight * 100 // total_weight
+            awarded = test.awarded * test.weight // 100
+            print(f"{test.label.ljust(max_label_len)}|    {test.awarded:03d}% |   {test.weight:03d}% |    {awarded:03d}%")
+            grade += awarded
+        print(f"{'-' * max_label_len}|---------|--------|-----------")
+        print(f"{'Total':<{max_label_len}}|         |   100% |    {grade:03d}%")
+        return grade
 
-
-def main(output_json: str):
+def main():
     test_list = MyTestList()
-    test_list.add_test("leds", 10)
-    test_list.add_test("media", 10)
-    test_list.add_test("traficantes", 30)
-
-    with open(output_json, 'w') as f:
-        f.write(test_list.to_json())
+    test_list.add_test("leds", 1)
+    test_list.add_test("media", 1)
+    test_list.add_test("traficantes", 2)
+    awarded = test_list.calc_grade()
+    with open("awarded.txt", "w") as f:
+        print(f"Total awarded: {awarded} writing to awarded.txt")
+        f.write(str(awarded))
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run tests and generate JSON report")
-    parser.add_argument("--output-json", default="results.json", help="Path to output JSON file")
-    args = parser.parse_args()
-
-    main(args.output_json)
+    main()
