@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Run setup script
-      run: pipx install tko && ./run_tests.py
+      run: pipx install tko && ./python grade.py run
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
@@ -26,7 +26,7 @@ jobs:
       with:
         test-name: grade-01
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '1'
         expected-output: '1'
         comparison-method: exact
@@ -38,7 +38,7 @@ jobs:
       with:
         test-name: grade-02
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '2'
         expected-output: '1'
         comparison-method: exact
@@ -50,7 +50,7 @@ jobs:
       with:
         test-name: grade-03
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '3'
         expected-output: '1'
         comparison-method: exact
@@ -62,7 +62,7 @@ jobs:
       with:
         test-name: grade-04
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '4'
         expected-output: '1'
         comparison-method: exact
@@ -74,7 +74,7 @@ jobs:
       with:
         test-name: grade-05
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '5'
         expected-output: '1'
         comparison-method: exact
@@ -86,7 +86,7 @@ jobs:
       with:
         test-name: grade-06
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '6'
         expected-output: '1'
         comparison-method: exact
@@ -98,7 +98,7 @@ jobs:
       with:
         test-name: grade-07
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '7'
         expected-output: '1'
         comparison-method: exact
@@ -110,7 +110,7 @@ jobs:
       with:
         test-name: grade-08
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '8'
         expected-output: '1'
         comparison-method: exact
@@ -122,7 +122,7 @@ jobs:
       with:
         test-name: grade-09
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '9'
         expected-output: '1'
         comparison-method: exact
@@ -134,7 +134,7 @@ jobs:
       with:
         test-name: grade-10
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '10'
         expected-output: '1'
         comparison-method: exact
@@ -146,7 +146,7 @@ jobs:
       with:
         test-name: grade-11
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '11'
         expected-output: '1'
         comparison-method: exact
@@ -158,7 +158,7 @@ jobs:
       with:
         test-name: grade-12
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '12'
         expected-output: '1'
         comparison-method: exact
@@ -170,7 +170,7 @@ jobs:
       with:
         test-name: grade-13
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '13'
         expected-output: '1'
         comparison-method: exact
@@ -182,7 +182,7 @@ jobs:
       with:
         test-name: grade-14
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '14'
         expected-output: '1'
         comparison-method: exact
@@ -194,7 +194,7 @@ jobs:
       with:
         test-name: grade-15
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '15'
         expected-output: '1'
         comparison-method: exact
@@ -206,7 +206,7 @@ jobs:
       with:
         test-name: grade-16
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '16'
         expected-output: '1'
         comparison-method: exact
@@ -218,7 +218,7 @@ jobs:
       with:
         test-name: grade-17
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '17'
         expected-output: '1'
         comparison-method: exact
@@ -230,7 +230,7 @@ jobs:
       with:
         test-name: grade-18
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '18'
         expected-output: '1'
         comparison-method: exact
@@ -242,7 +242,7 @@ jobs:
       with:
         test-name: grade-19
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '19'
         expected-output: '1'
         comparison-method: exact
@@ -254,7 +254,7 @@ jobs:
       with:
         test-name: grade-20
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '20'
         expected-output: '1'
         comparison-method: exact
@@ -266,7 +266,7 @@ jobs:
       with:
         test-name: grade-21
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '21'
         expected-output: '1'
         comparison-method: exact
@@ -278,7 +278,7 @@ jobs:
       with:
         test-name: grade-22
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '22'
         expected-output: '1'
         comparison-method: exact
@@ -290,7 +290,7 @@ jobs:
       with:
         test-name: grade-23
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '23'
         expected-output: '1'
         comparison-method: exact
@@ -302,7 +302,7 @@ jobs:
       with:
         test-name: grade-24
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '24'
         expected-output: '1'
         comparison-method: exact
@@ -314,7 +314,7 @@ jobs:
       with:
         test-name: grade-25
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '25'
         expected-output: '1'
         comparison-method: exact
@@ -326,7 +326,7 @@ jobs:
       with:
         test-name: grade-26
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '26'
         expected-output: '1'
         comparison-method: exact
@@ -338,7 +338,7 @@ jobs:
       with:
         test-name: grade-27
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '27'
         expected-output: '1'
         comparison-method: exact
@@ -350,7 +350,7 @@ jobs:
       with:
         test-name: grade-28
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '28'
         expected-output: '1'
         comparison-method: exact
@@ -362,7 +362,7 @@ jobs:
       with:
         test-name: grade-29
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '29'
         expected-output: '1'
         comparison-method: exact
@@ -374,7 +374,7 @@ jobs:
       with:
         test-name: grade-30
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '30'
         expected-output: '1'
         comparison-method: exact
@@ -386,7 +386,7 @@ jobs:
       with:
         test-name: grade-31
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '31'
         expected-output: '1'
         comparison-method: exact
@@ -398,7 +398,7 @@ jobs:
       with:
         test-name: grade-32
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '32'
         expected-output: '1'
         comparison-method: exact
@@ -410,7 +410,7 @@ jobs:
       with:
         test-name: grade-33
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '33'
         expected-output: '1'
         comparison-method: exact
@@ -422,7 +422,7 @@ jobs:
       with:
         test-name: grade-34
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '34'
         expected-output: '1'
         comparison-method: exact
@@ -434,7 +434,7 @@ jobs:
       with:
         test-name: grade-35
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '35'
         expected-output: '1'
         comparison-method: exact
@@ -446,7 +446,7 @@ jobs:
       with:
         test-name: grade-36
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '36'
         expected-output: '1'
         comparison-method: exact
@@ -458,7 +458,7 @@ jobs:
       with:
         test-name: grade-37
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '37'
         expected-output: '1'
         comparison-method: exact
@@ -470,7 +470,7 @@ jobs:
       with:
         test-name: grade-38
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '38'
         expected-output: '1'
         comparison-method: exact
@@ -482,7 +482,7 @@ jobs:
       with:
         test-name: grade-39
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '39'
         expected-output: '1'
         comparison-method: exact
@@ -494,7 +494,7 @@ jobs:
       with:
         test-name: grade-40
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '40'
         expected-output: '1'
         comparison-method: exact
@@ -506,7 +506,7 @@ jobs:
       with:
         test-name: grade-41
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '41'
         expected-output: '1'
         comparison-method: exact
@@ -518,7 +518,7 @@ jobs:
       with:
         test-name: grade-42
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '42'
         expected-output: '1'
         comparison-method: exact
@@ -530,7 +530,7 @@ jobs:
       with:
         test-name: grade-43
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '43'
         expected-output: '1'
         comparison-method: exact
@@ -542,7 +542,7 @@ jobs:
       with:
         test-name: grade-44
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '44'
         expected-output: '1'
         comparison-method: exact
@@ -554,7 +554,7 @@ jobs:
       with:
         test-name: grade-45
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '45'
         expected-output: '1'
         comparison-method: exact
@@ -566,7 +566,7 @@ jobs:
       with:
         test-name: grade-46
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '46'
         expected-output: '1'
         comparison-method: exact
@@ -578,7 +578,7 @@ jobs:
       with:
         test-name: grade-47
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '47'
         expected-output: '1'
         comparison-method: exact
@@ -590,7 +590,7 @@ jobs:
       with:
         test-name: grade-48
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '48'
         expected-output: '1'
         comparison-method: exact
@@ -602,7 +602,7 @@ jobs:
       with:
         test-name: grade-49
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '49'
         expected-output: '1'
         comparison-method: exact
@@ -614,7 +614,7 @@ jobs:
       with:
         test-name: grade-50
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '50'
         expected-output: '1'
         comparison-method: exact
@@ -626,7 +626,7 @@ jobs:
       with:
         test-name: grade-51
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '51'
         expected-output: '1'
         comparison-method: exact
@@ -638,7 +638,7 @@ jobs:
       with:
         test-name: grade-52
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '52'
         expected-output: '1'
         comparison-method: exact
@@ -650,7 +650,7 @@ jobs:
       with:
         test-name: grade-53
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '53'
         expected-output: '1'
         comparison-method: exact
@@ -662,7 +662,7 @@ jobs:
       with:
         test-name: grade-54
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '54'
         expected-output: '1'
         comparison-method: exact
@@ -674,7 +674,7 @@ jobs:
       with:
         test-name: grade-55
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '55'
         expected-output: '1'
         comparison-method: exact
@@ -686,7 +686,7 @@ jobs:
       with:
         test-name: grade-56
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '56'
         expected-output: '1'
         comparison-method: exact
@@ -698,7 +698,7 @@ jobs:
       with:
         test-name: grade-57
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '57'
         expected-output: '1'
         comparison-method: exact
@@ -710,7 +710,7 @@ jobs:
       with:
         test-name: grade-58
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '58'
         expected-output: '1'
         comparison-method: exact
@@ -722,7 +722,7 @@ jobs:
       with:
         test-name: grade-59
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '59'
         expected-output: '1'
         comparison-method: exact
@@ -734,7 +734,7 @@ jobs:
       with:
         test-name: grade-60
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '60'
         expected-output: '1'
         comparison-method: exact
@@ -746,7 +746,7 @@ jobs:
       with:
         test-name: grade-61
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '61'
         expected-output: '1'
         comparison-method: exact
@@ -758,7 +758,7 @@ jobs:
       with:
         test-name: grade-62
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '62'
         expected-output: '1'
         comparison-method: exact
@@ -770,7 +770,7 @@ jobs:
       with:
         test-name: grade-63
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '63'
         expected-output: '1'
         comparison-method: exact
@@ -782,7 +782,7 @@ jobs:
       with:
         test-name: grade-64
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '64'
         expected-output: '1'
         comparison-method: exact
@@ -794,7 +794,7 @@ jobs:
       with:
         test-name: grade-65
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '65'
         expected-output: '1'
         comparison-method: exact
@@ -806,7 +806,7 @@ jobs:
       with:
         test-name: grade-66
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '66'
         expected-output: '1'
         comparison-method: exact
@@ -818,7 +818,7 @@ jobs:
       with:
         test-name: grade-67
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '67'
         expected-output: '1'
         comparison-method: exact
@@ -830,7 +830,7 @@ jobs:
       with:
         test-name: grade-68
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '68'
         expected-output: '1'
         comparison-method: exact
@@ -842,7 +842,7 @@ jobs:
       with:
         test-name: grade-69
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '69'
         expected-output: '1'
         comparison-method: exact
@@ -854,7 +854,7 @@ jobs:
       with:
         test-name: grade-70
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '70'
         expected-output: '1'
         comparison-method: exact
@@ -866,7 +866,7 @@ jobs:
       with:
         test-name: grade-71
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '71'
         expected-output: '1'
         comparison-method: exact
@@ -878,7 +878,7 @@ jobs:
       with:
         test-name: grade-72
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '72'
         expected-output: '1'
         comparison-method: exact
@@ -890,7 +890,7 @@ jobs:
       with:
         test-name: grade-73
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '73'
         expected-output: '1'
         comparison-method: exact
@@ -902,7 +902,7 @@ jobs:
       with:
         test-name: grade-74
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '74'
         expected-output: '1'
         comparison-method: exact
@@ -914,7 +914,7 @@ jobs:
       with:
         test-name: grade-75
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '75'
         expected-output: '1'
         comparison-method: exact
@@ -926,7 +926,7 @@ jobs:
       with:
         test-name: grade-76
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '76'
         expected-output: '1'
         comparison-method: exact
@@ -938,7 +938,7 @@ jobs:
       with:
         test-name: grade-77
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '77'
         expected-output: '1'
         comparison-method: exact
@@ -950,7 +950,7 @@ jobs:
       with:
         test-name: grade-78
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '78'
         expected-output: '1'
         comparison-method: exact
@@ -962,7 +962,7 @@ jobs:
       with:
         test-name: grade-79
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '79'
         expected-output: '1'
         comparison-method: exact
@@ -974,7 +974,7 @@ jobs:
       with:
         test-name: grade-80
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '80'
         expected-output: '1'
         comparison-method: exact
@@ -986,7 +986,7 @@ jobs:
       with:
         test-name: grade-81
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '81'
         expected-output: '1'
         comparison-method: exact
@@ -998,7 +998,7 @@ jobs:
       with:
         test-name: grade-82
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '82'
         expected-output: '1'
         comparison-method: exact
@@ -1010,7 +1010,7 @@ jobs:
       with:
         test-name: grade-83
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '83'
         expected-output: '1'
         comparison-method: exact
@@ -1022,7 +1022,7 @@ jobs:
       with:
         test-name: grade-84
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '84'
         expected-output: '1'
         comparison-method: exact
@@ -1034,7 +1034,7 @@ jobs:
       with:
         test-name: grade-85
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '85'
         expected-output: '1'
         comparison-method: exact
@@ -1046,7 +1046,7 @@ jobs:
       with:
         test-name: grade-86
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '86'
         expected-output: '1'
         comparison-method: exact
@@ -1058,7 +1058,7 @@ jobs:
       with:
         test-name: grade-87
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '87'
         expected-output: '1'
         comparison-method: exact
@@ -1070,7 +1070,7 @@ jobs:
       with:
         test-name: grade-88
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '88'
         expected-output: '1'
         comparison-method: exact
@@ -1082,7 +1082,7 @@ jobs:
       with:
         test-name: grade-89
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '89'
         expected-output: '1'
         comparison-method: exact
@@ -1094,7 +1094,7 @@ jobs:
       with:
         test-name: grade-90
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '90'
         expected-output: '1'
         comparison-method: exact
@@ -1106,7 +1106,7 @@ jobs:
       with:
         test-name: grade-91
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '91'
         expected-output: '1'
         comparison-method: exact
@@ -1118,7 +1118,7 @@ jobs:
       with:
         test-name: grade-92
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '92'
         expected-output: '1'
         comparison-method: exact
@@ -1130,7 +1130,7 @@ jobs:
       with:
         test-name: grade-93
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '93'
         expected-output: '1'
         comparison-method: exact
@@ -1142,7 +1142,7 @@ jobs:
       with:
         test-name: grade-94
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '94'
         expected-output: '1'
         comparison-method: exact
@@ -1154,7 +1154,7 @@ jobs:
       with:
         test-name: grade-95
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '95'
         expected-output: '1'
         comparison-method: exact
@@ -1166,7 +1166,7 @@ jobs:
       with:
         test-name: grade-96
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '96'
         expected-output: '1'
         comparison-method: exact
@@ -1178,7 +1178,7 @@ jobs:
       with:
         test-name: grade-97
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '97'
         expected-output: '1'
         comparison-method: exact
@@ -1190,7 +1190,7 @@ jobs:
       with:
         test-name: grade-98
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '98'
         expected-output: '1'
         comparison-method: exact
@@ -1202,7 +1202,7 @@ jobs:
       with:
         test-name: grade-99
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '99'
         expected-output: '1'
         comparison-method: exact
@@ -1214,7 +1214,7 @@ jobs:
       with:
         test-name: grade-100
         setup-command: ''
-        command: python grade.py
+        command: python grade.py check
         input: '100'
         expected-output: '1'
         comparison-method: exact
