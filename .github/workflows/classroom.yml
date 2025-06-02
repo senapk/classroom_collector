@@ -7,6 +7,13 @@ permissions:
   actions: read
   contents: read
 jobs:
+  setup-environment: # Novo job de configuração
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Run setup script
+      run: pipx install tko
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
@@ -19,7 +26,7 @@ jobs:
       with:
         test-name: grade-01
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '1'
         expected-output: '1'
         comparison-method: exact
@@ -31,7 +38,7 @@ jobs:
       with:
         test-name: grade-02
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '2'
         expected-output: '1'
         comparison-method: exact
@@ -43,7 +50,7 @@ jobs:
       with:
         test-name: grade-03
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '3'
         expected-output: '1'
         comparison-method: exact
@@ -55,7 +62,7 @@ jobs:
       with:
         test-name: grade-04
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '4'
         expected-output: '1'
         comparison-method: exact
@@ -67,7 +74,7 @@ jobs:
       with:
         test-name: grade-05
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '5'
         expected-output: '1'
         comparison-method: exact
@@ -79,7 +86,7 @@ jobs:
       with:
         test-name: grade-06
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '6'
         expected-output: '1'
         comparison-method: exact
@@ -91,7 +98,7 @@ jobs:
       with:
         test-name: grade-07
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '7'
         expected-output: '1'
         comparison-method: exact
@@ -103,7 +110,7 @@ jobs:
       with:
         test-name: grade-08
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '8'
         expected-output: '1'
         comparison-method: exact
@@ -115,7 +122,7 @@ jobs:
       with:
         test-name: grade-09
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '9'
         expected-output: '1'
         comparison-method: exact
@@ -127,7 +134,7 @@ jobs:
       with:
         test-name: grade-10
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '10'
         expected-output: '1'
         comparison-method: exact
@@ -139,7 +146,7 @@ jobs:
       with:
         test-name: grade-11
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '11'
         expected-output: '1'
         comparison-method: exact
@@ -151,7 +158,7 @@ jobs:
       with:
         test-name: grade-12
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '12'
         expected-output: '1'
         comparison-method: exact
@@ -163,7 +170,7 @@ jobs:
       with:
         test-name: grade-13
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '13'
         expected-output: '1'
         comparison-method: exact
@@ -175,7 +182,7 @@ jobs:
       with:
         test-name: grade-14
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '14'
         expected-output: '1'
         comparison-method: exact
@@ -187,7 +194,7 @@ jobs:
       with:
         test-name: grade-15
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '15'
         expected-output: '1'
         comparison-method: exact
@@ -199,7 +206,7 @@ jobs:
       with:
         test-name: grade-16
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '16'
         expected-output: '1'
         comparison-method: exact
@@ -211,7 +218,7 @@ jobs:
       with:
         test-name: grade-17
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '17'
         expected-output: '1'
         comparison-method: exact
@@ -223,7 +230,7 @@ jobs:
       with:
         test-name: grade-18
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '18'
         expected-output: '1'
         comparison-method: exact
@@ -235,7 +242,7 @@ jobs:
       with:
         test-name: grade-19
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '19'
         expected-output: '1'
         comparison-method: exact
@@ -247,8 +254,968 @@ jobs:
       with:
         test-name: grade-20
         setup-command: ''
-        command: grade.py
+        command: python grade.py
         input: '20'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-21
+      id: grade-21
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-21
+        setup-command: ''
+        command: python grade.py
+        input: '21'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-22
+      id: grade-22
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-22
+        setup-command: ''
+        command: python grade.py
+        input: '22'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-23
+      id: grade-23
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-23
+        setup-command: ''
+        command: python grade.py
+        input: '23'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-24
+      id: grade-24
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-24
+        setup-command: ''
+        command: python grade.py
+        input: '24'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-25
+      id: grade-25
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-25
+        setup-command: ''
+        command: python grade.py
+        input: '25'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-26
+      id: grade-26
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-26
+        setup-command: ''
+        command: python grade.py
+        input: '26'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-27
+      id: grade-27
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-27
+        setup-command: ''
+        command: python grade.py
+        input: '27'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-28
+      id: grade-28
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-28
+        setup-command: ''
+        command: python grade.py
+        input: '28'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-29
+      id: grade-29
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-29
+        setup-command: ''
+        command: python grade.py
+        input: '29'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-30
+      id: grade-30
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-30
+        setup-command: ''
+        command: python grade.py
+        input: '30'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-31
+      id: grade-31
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-31
+        setup-command: ''
+        command: python grade.py
+        input: '31'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-32
+      id: grade-32
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-32
+        setup-command: ''
+        command: python grade.py
+        input: '32'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-33
+      id: grade-33
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-33
+        setup-command: ''
+        command: python grade.py
+        input: '33'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-34
+      id: grade-34
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-34
+        setup-command: ''
+        command: python grade.py
+        input: '34'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-35
+      id: grade-35
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-35
+        setup-command: ''
+        command: python grade.py
+        input: '35'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-36
+      id: grade-36
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-36
+        setup-command: ''
+        command: python grade.py
+        input: '36'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-37
+      id: grade-37
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-37
+        setup-command: ''
+        command: python grade.py
+        input: '37'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-38
+      id: grade-38
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-38
+        setup-command: ''
+        command: python grade.py
+        input: '38'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-39
+      id: grade-39
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-39
+        setup-command: ''
+        command: python grade.py
+        input: '39'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-40
+      id: grade-40
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-40
+        setup-command: ''
+        command: python grade.py
+        input: '40'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-41
+      id: grade-41
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-41
+        setup-command: ''
+        command: python grade.py
+        input: '41'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-42
+      id: grade-42
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-42
+        setup-command: ''
+        command: python grade.py
+        input: '42'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-43
+      id: grade-43
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-43
+        setup-command: ''
+        command: python grade.py
+        input: '43'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-44
+      id: grade-44
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-44
+        setup-command: ''
+        command: python grade.py
+        input: '44'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-45
+      id: grade-45
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-45
+        setup-command: ''
+        command: python grade.py
+        input: '45'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-46
+      id: grade-46
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-46
+        setup-command: ''
+        command: python grade.py
+        input: '46'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-47
+      id: grade-47
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-47
+        setup-command: ''
+        command: python grade.py
+        input: '47'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-48
+      id: grade-48
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-48
+        setup-command: ''
+        command: python grade.py
+        input: '48'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-49
+      id: grade-49
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-49
+        setup-command: ''
+        command: python grade.py
+        input: '49'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-50
+      id: grade-50
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-50
+        setup-command: ''
+        command: python grade.py
+        input: '50'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-51
+      id: grade-51
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-51
+        setup-command: ''
+        command: python grade.py
+        input: '51'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-52
+      id: grade-52
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-52
+        setup-command: ''
+        command: python grade.py
+        input: '52'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-53
+      id: grade-53
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-53
+        setup-command: ''
+        command: python grade.py
+        input: '53'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-54
+      id: grade-54
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-54
+        setup-command: ''
+        command: python grade.py
+        input: '54'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-55
+      id: grade-55
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-55
+        setup-command: ''
+        command: python grade.py
+        input: '55'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-56
+      id: grade-56
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-56
+        setup-command: ''
+        command: python grade.py
+        input: '56'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-57
+      id: grade-57
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-57
+        setup-command: ''
+        command: python grade.py
+        input: '57'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-58
+      id: grade-58
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-58
+        setup-command: ''
+        command: python grade.py
+        input: '58'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-59
+      id: grade-59
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-59
+        setup-command: ''
+        command: python grade.py
+        input: '59'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-60
+      id: grade-60
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-60
+        setup-command: ''
+        command: python grade.py
+        input: '60'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-61
+      id: grade-61
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-61
+        setup-command: ''
+        command: python grade.py
+        input: '61'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-62
+      id: grade-62
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-62
+        setup-command: ''
+        command: python grade.py
+        input: '62'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-63
+      id: grade-63
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-63
+        setup-command: ''
+        command: python grade.py
+        input: '63'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-64
+      id: grade-64
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-64
+        setup-command: ''
+        command: python grade.py
+        input: '64'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-65
+      id: grade-65
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-65
+        setup-command: ''
+        command: python grade.py
+        input: '65'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-66
+      id: grade-66
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-66
+        setup-command: ''
+        command: python grade.py
+        input: '66'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-67
+      id: grade-67
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-67
+        setup-command: ''
+        command: python grade.py
+        input: '67'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-68
+      id: grade-68
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-68
+        setup-command: ''
+        command: python grade.py
+        input: '68'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-69
+      id: grade-69
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-69
+        setup-command: ''
+        command: python grade.py
+        input: '69'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-70
+      id: grade-70
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-70
+        setup-command: ''
+        command: python grade.py
+        input: '70'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-71
+      id: grade-71
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-71
+        setup-command: ''
+        command: python grade.py
+        input: '71'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-72
+      id: grade-72
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-72
+        setup-command: ''
+        command: python grade.py
+        input: '72'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-73
+      id: grade-73
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-73
+        setup-command: ''
+        command: python grade.py
+        input: '73'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-74
+      id: grade-74
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-74
+        setup-command: ''
+        command: python grade.py
+        input: '74'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-75
+      id: grade-75
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-75
+        setup-command: ''
+        command: python grade.py
+        input: '75'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-76
+      id: grade-76
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-76
+        setup-command: ''
+        command: python grade.py
+        input: '76'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-77
+      id: grade-77
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-77
+        setup-command: ''
+        command: python grade.py
+        input: '77'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-78
+      id: grade-78
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-78
+        setup-command: ''
+        command: python grade.py
+        input: '78'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-79
+      id: grade-79
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-79
+        setup-command: ''
+        command: python grade.py
+        input: '79'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-80
+      id: grade-80
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-80
+        setup-command: ''
+        command: python grade.py
+        input: '80'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-81
+      id: grade-81
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-81
+        setup-command: ''
+        command: python grade.py
+        input: '81'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-82
+      id: grade-82
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-82
+        setup-command: ''
+        command: python grade.py
+        input: '82'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-83
+      id: grade-83
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-83
+        setup-command: ''
+        command: python grade.py
+        input: '83'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-84
+      id: grade-84
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-84
+        setup-command: ''
+        command: python grade.py
+        input: '84'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-85
+      id: grade-85
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-85
+        setup-command: ''
+        command: python grade.py
+        input: '85'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-86
+      id: grade-86
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-86
+        setup-command: ''
+        command: python grade.py
+        input: '86'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-87
+      id: grade-87
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-87
+        setup-command: ''
+        command: python grade.py
+        input: '87'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-88
+      id: grade-88
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-88
+        setup-command: ''
+        command: python grade.py
+        input: '88'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-89
+      id: grade-89
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-89
+        setup-command: ''
+        command: python grade.py
+        input: '89'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-90
+      id: grade-90
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-90
+        setup-command: ''
+        command: python grade.py
+        input: '90'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-91
+      id: grade-91
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-91
+        setup-command: ''
+        command: python grade.py
+        input: '91'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-92
+      id: grade-92
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-92
+        setup-command: ''
+        command: python grade.py
+        input: '92'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-93
+      id: grade-93
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-93
+        setup-command: ''
+        command: python grade.py
+        input: '93'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-94
+      id: grade-94
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-94
+        setup-command: ''
+        command: python grade.py
+        input: '94'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-95
+      id: grade-95
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-95
+        setup-command: ''
+        command: python grade.py
+        input: '95'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-96
+      id: grade-96
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-96
+        setup-command: ''
+        command: python grade.py
+        input: '96'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-97
+      id: grade-97
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-97
+        setup-command: ''
+        command: python grade.py
+        input: '97'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-98
+      id: grade-98
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-98
+        setup-command: ''
+        command: python grade.py
+        input: '98'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-99
+      id: grade-99
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-99
+        setup-command: ''
+        command: python grade.py
+        input: '99'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-100
+      id: grade-100
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-100
+        setup-command: ''
+        command: python grade.py
+        input: '100'
         expected-output: '1'
         comparison-method: exact
         timeout: 1
@@ -276,5 +1243,85 @@ jobs:
         GRADE-18_RESULTS: "${{steps.grade-18.outputs.result}}"
         GRADE-19_RESULTS: "${{steps.grade-19.outputs.result}}"
         GRADE-20_RESULTS: "${{steps.grade-20.outputs.result}}"
+        GRADE-21_RESULTS: "${{steps.grade-21.outputs.result}}"
+        GRADE-22_RESULTS: "${{steps.grade-22.outputs.result}}"
+        GRADE-23_RESULTS: "${{steps.grade-23.outputs.result}}"
+        GRADE-24_RESULTS: "${{steps.grade-24.outputs.result}}"
+        GRADE-25_RESULTS: "${{steps.grade-25.outputs.result}}"
+        GRADE-26_RESULTS: "${{steps.grade-26.outputs.result}}"
+        GRADE-27_RESULTS: "${{steps.grade-27.outputs.result}}"
+        GRADE-28_RESULTS: "${{steps.grade-28.outputs.result}}"
+        GRADE-29_RESULTS: "${{steps.grade-29.outputs.result}}"
+        GRADE-30_RESULTS: "${{steps.grade-30.outputs.result}}"
+        GRADE-31_RESULTS: "${{steps.grade-31.outputs.result}}"
+        GRADE-32_RESULTS: "${{steps.grade-32.outputs.result}}"
+        GRADE-33_RESULTS: "${{steps.grade-33.outputs.result}}"
+        GRADE-34_RESULTS: "${{steps.grade-34.outputs.result}}"
+        GRADE-35_RESULTS: "${{steps.grade-35.outputs.result}}"
+        GRADE-36_RESULTS: "${{steps.grade-36.outputs.result}}"
+        GRADE-37_RESULTS: "${{steps.grade-37.outputs.result}}"
+        GRADE-38_RESULTS: "${{steps.grade-38.outputs.result}}"
+        GRADE-39_RESULTS: "${{steps.grade-39.outputs.result}}"
+        GRADE-40_RESULTS: "${{steps.grade-40.outputs.result}}"
+        GRADE-41_RESULTS: "${{steps.grade-41.outputs.result}}"
+        GRADE-42_RESULTS: "${{steps.grade-42.outputs.result}}"
+        GRADE-43_RESULTS: "${{steps.grade-43.outputs.result}}"
+        GRADE-44_RESULTS: "${{steps.grade-44.outputs.result}}"
+        GRADE-45_RESULTS: "${{steps.grade-45.outputs.result}}"
+        GRADE-46_RESULTS: "${{steps.grade-46.outputs.result}}"
+        GRADE-47_RESULTS: "${{steps.grade-47.outputs.result}}"
+        GRADE-48_RESULTS: "${{steps.grade-48.outputs.result}}"
+        GRADE-49_RESULTS: "${{steps.grade-49.outputs.result}}"
+        GRADE-50_RESULTS: "${{steps.grade-50.outputs.result}}"
+        GRADE-51_RESULTS: "${{steps.grade-51.outputs.result}}"
+        GRADE-52_RESULTS: "${{steps.grade-52.outputs.result}}"
+        GRADE-53_RESULTS: "${{steps.grade-53.outputs.result}}"
+        GRADE-54_RESULTS: "${{steps.grade-54.outputs.result}}"
+        GRADE-55_RESULTS: "${{steps.grade-55.outputs.result}}"
+        GRADE-56_RESULTS: "${{steps.grade-56.outputs.result}}"
+        GRADE-57_RESULTS: "${{steps.grade-57.outputs.result}}"
+        GRADE-58_RESULTS: "${{steps.grade-58.outputs.result}}"
+        GRADE-59_RESULTS: "${{steps.grade-59.outputs.result}}"
+        GRADE-60_RESULTS: "${{steps.grade-60.outputs.result}}"
+        GRADE-61_RESULTS: "${{steps.grade-61.outputs.result}}"
+        GRADE-62_RESULTS: "${{steps.grade-62.outputs.result}}"
+        GRADE-63_RESULTS: "${{steps.grade-63.outputs.result}}"
+        GRADE-64_RESULTS: "${{steps.grade-64.outputs.result}}"
+        GRADE-65_RESULTS: "${{steps.grade-65.outputs.result}}"
+        GRADE-66_RESULTS: "${{steps.grade-66.outputs.result}}"
+        GRADE-67_RESULTS: "${{steps.grade-67.outputs.result}}"
+        GRADE-68_RESULTS: "${{steps.grade-68.outputs.result}}"
+        GRADE-69_RESULTS: "${{steps.grade-69.outputs.result}}"
+        GRADE-70_RESULTS: "${{steps.grade-70.outputs.result}}"
+        GRADE-71_RESULTS: "${{steps.grade-71.outputs.result}}"
+        GRADE-72_RESULTS: "${{steps.grade-72.outputs.result}}"
+        GRADE-73_RESULTS: "${{steps.grade-73.outputs.result}}"
+        GRADE-74_RESULTS: "${{steps.grade-74.outputs.result}}"
+        GRADE-75_RESULTS: "${{steps.grade-75.outputs.result}}"
+        GRADE-76_RESULTS: "${{steps.grade-76.outputs.result}}"
+        GRADE-77_RESULTS: "${{steps.grade-77.outputs.result}}"
+        GRADE-78_RESULTS: "${{steps.grade-78.outputs.result}}"
+        GRADE-79_RESULTS: "${{steps.grade-79.outputs.result}}"
+        GRADE-80_RESULTS: "${{steps.grade-80.outputs.result}}"
+        GRADE-81_RESULTS: "${{steps.grade-81.outputs.result}}"
+        GRADE-82_RESULTS: "${{steps.grade-82.outputs.result}}"
+        GRADE-83_RESULTS: "${{steps.grade-83.outputs.result}}"
+        GRADE-84_RESULTS: "${{steps.grade-84.outputs.result}}"
+        GRADE-85_RESULTS: "${{steps.grade-85.outputs.result}}"
+        GRADE-86_RESULTS: "${{steps.grade-86.outputs.result}}"
+        GRADE-87_RESULTS: "${{steps.grade-87.outputs.result}}"
+        GRADE-88_RESULTS: "${{steps.grade-88.outputs.result}}"
+        GRADE-89_RESULTS: "${{steps.grade-89.outputs.result}}"
+        GRADE-90_RESULTS: "${{steps.grade-90.outputs.result}}"
+        GRADE-91_RESULTS: "${{steps.grade-91.outputs.result}}"
+        GRADE-92_RESULTS: "${{steps.grade-92.outputs.result}}"
+        GRADE-93_RESULTS: "${{steps.grade-93.outputs.result}}"
+        GRADE-94_RESULTS: "${{steps.grade-94.outputs.result}}"
+        GRADE-95_RESULTS: "${{steps.grade-95.outputs.result}}"
+        GRADE-96_RESULTS: "${{steps.grade-96.outputs.result}}"
+        GRADE-97_RESULTS: "${{steps.grade-97.outputs.result}}"
+        GRADE-98_RESULTS: "${{steps.grade-98.outputs.result}}"
+        GRADE-99_RESULTS: "${{steps.grade-99.outputs.result}}"
+        GRADE-100_RESULTS: "${{steps.grade-100.outputs.result}}"
       with:
-        runners: grade-01,grade-02,grade-03,grade-04,grade-05,grade-06,grade-07,grade-08,grade-09,grade-10,grade-11,grade-12,grade-13,grade-14,grade-15,grade-16,grade-17,grade-18,grade-19,grade-20
+        runners: grade-01,grade-02,grade-03,grade-04,grade-05,grade-06,grade-07,grade-08,grade-09,grade-10,grade-11,grade-12,grade-13,grade-14,grade-15,grade-16,grade-17,grade-18,grade-19,grade-20,grade-21,grade-22,grade-23,grade-24,grade-25,grade-26,grade-27,grade-28,grade-29,grade-30,grade-31,grade-32,grade-33,grade-34,grade-35,grade-36,grade-37,grade-38,grade-39,grade-40,grade-41,grade-42,grade-43,grade-44,grade-45,grade-46,grade-47,grade-48,grade-49,grade-50,grade-51,grade-52,grade-53,grade-54,grade-55,grade-56,grade-57,grade-58,grade-59,grade-60,grade-61,grade-62,grade-63,grade-64,grade-65,grade-66,grade-67,grade-68,grade-69,grade-70,grade-71,grade-72,grade-73,grade-74,grade-75,grade-76,grade-77,grade-78,grade-79,grade-80,grade-81,grade-82,grade-83,grade-84,grade-85,grade-86,grade-87,grade-88,grade-89,grade-90,grade-91,grade-92,grade-93,grade-94,grade-95,grade-96,grade-97,grade-98,grade-99,grade-100
