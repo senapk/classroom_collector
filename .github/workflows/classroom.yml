@@ -1,63 +1,280 @@
-name: Autograding # Nome do workflow, visível na aba "Actions"
-
-on: [push, workflow_dispatch] # Eventos que disparam o workflow (envio de código ou manual)
-
-permissions: # Permissões necessárias para o workflow
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
   checks: write
   actions: read
   contents: read
-  # Adicione 'security-events: write' se estiver usando upload de resultados SARIF para Code Scanning
-  # Adicione 'statuses: write' se necessário por alguma action específica
-
 jobs:
-  build: # Nome do job (você pode ter múltiplos jobs)
-    name: Autograding Tests # Nome mais descritivo para o job, visível na interface
-    runs-on: ubuntu-latest # Sistema operacional da máquina virtual que rodará o job
-
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
     steps:
-      # 1. Checkout do código do aluno
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # 2. Configuração do ambiente (exemplo para Python, adapte para sua linguagem)
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10' # Especifique a versão
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pipx install tko
-
-      # 3. AQUI é onde você define o autograding-command-grader
-      - name: Run autograding tests
-        uses: education/autograding-command-grader@v1 # Ou classroom-resources/autograding-command-grader@v1
-        with:
-          # Nome do teste como aparecerá no GitHub Classroom e nos Checks
-          test-name: "Testes Personalizados"
-
-          # Comando para preparar o ambiente de teste (se não feito nos passos anteriores)
-          # Ex: instalar pacotes específicos para o teste
-          setup-command: "" # Pode ser deixado em branco se o setup já foi feito
-
-          # O comando que executa SEU script de teste.
-          # Este script é responsável por rodar os testes e gerar o arquivo JSON de resultados.
-          command: "python run_tests.py --output-json results.json"
-
-          # Tempo máximo (em minutos) que o comando de teste pode rodar
-          timeout: 10 # Padrão é 10 minutos
-
-          # Pontuação máxima possível para este conjunto de testes
-          # O 'autograding-command-grader' usará isso para calcular a proporção de pontos.
-          max-score: 100
-
-          # Opcional: Caminho para o arquivo de resultados JSON se não for o padrão ('results.json')
-          # results-file: "my_custom_results_filename.json"
-
-          # Opcional: Como lidar com STDOUT (saída padrão) e STDERR (saída de erro)
-          # Pode ser 'capture', 'passthrough', ou 'ignore'. 'capture' é útil para incluir no JSON.
-          # stdout-on-failure: 'capture'
-          # stderr-on-failure: 'capture'
-
-# Outros jobs podem ser definidos aqui, se necessário
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: grade-01
+      id: grade-01
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-01
+        setup-command: ''
+        command: grade.py
+        input: '1'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-02
+      id: grade-02
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-02
+        setup-command: ''
+        command: grade.py
+        input: '2'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-03
+      id: grade-03
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-03
+        setup-command: ''
+        command: grade.py
+        input: '3'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-04
+      id: grade-04
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-04
+        setup-command: ''
+        command: grade.py
+        input: '4'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-05
+      id: grade-05
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-05
+        setup-command: ''
+        command: grade.py
+        input: '5'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-06
+      id: grade-06
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-06
+        setup-command: ''
+        command: grade.py
+        input: '6'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-07
+      id: grade-07
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-07
+        setup-command: ''
+        command: grade.py
+        input: '7'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-08
+      id: grade-08
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-08
+        setup-command: ''
+        command: grade.py
+        input: '8'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-09
+      id: grade-09
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-09
+        setup-command: ''
+        command: grade.py
+        input: '9'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-10
+      id: grade-10
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-10
+        setup-command: ''
+        command: grade.py
+        input: '10'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-11
+      id: grade-11
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-11
+        setup-command: ''
+        command: grade.py
+        input: '11'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-12
+      id: grade-12
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-12
+        setup-command: ''
+        command: grade.py
+        input: '12'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-13
+      id: grade-13
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-13
+        setup-command: ''
+        command: grade.py
+        input: '13'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-14
+      id: grade-14
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-14
+        setup-command: ''
+        command: grade.py
+        input: '14'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-15
+      id: grade-15
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-15
+        setup-command: ''
+        command: grade.py
+        input: '15'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-16
+      id: grade-16
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-16
+        setup-command: ''
+        command: grade.py
+        input: '16'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-17
+      id: grade-17
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-17
+        setup-command: ''
+        command: grade.py
+        input: '17'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-18
+      id: grade-18
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-18
+        setup-command: ''
+        command: grade.py
+        input: '18'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-19
+      id: grade-19
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-19
+        setup-command: ''
+        command: grade.py
+        input: '19'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: grade-20
+      id: grade-20
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: grade-20
+        setup-command: ''
+        command: grade.py
+        input: '20'
+        expected-output: '1'
+        comparison-method: exact
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        GRADE-01_RESULTS: "${{steps.grade-01.outputs.result}}"
+        GRADE-02_RESULTS: "${{steps.grade-02.outputs.result}}"
+        GRADE-03_RESULTS: "${{steps.grade-03.outputs.result}}"
+        GRADE-04_RESULTS: "${{steps.grade-04.outputs.result}}"
+        GRADE-05_RESULTS: "${{steps.grade-05.outputs.result}}"
+        GRADE-06_RESULTS: "${{steps.grade-06.outputs.result}}"
+        GRADE-07_RESULTS: "${{steps.grade-07.outputs.result}}"
+        GRADE-08_RESULTS: "${{steps.grade-08.outputs.result}}"
+        GRADE-09_RESULTS: "${{steps.grade-09.outputs.result}}"
+        GRADE-10_RESULTS: "${{steps.grade-10.outputs.result}}"
+        GRADE-11_RESULTS: "${{steps.grade-11.outputs.result}}"
+        GRADE-12_RESULTS: "${{steps.grade-12.outputs.result}}"
+        GRADE-13_RESULTS: "${{steps.grade-13.outputs.result}}"
+        GRADE-14_RESULTS: "${{steps.grade-14.outputs.result}}"
+        GRADE-15_RESULTS: "${{steps.grade-15.outputs.result}}"
+        GRADE-16_RESULTS: "${{steps.grade-16.outputs.result}}"
+        GRADE-17_RESULTS: "${{steps.grade-17.outputs.result}}"
+        GRADE-18_RESULTS: "${{steps.grade-18.outputs.result}}"
+        GRADE-19_RESULTS: "${{steps.grade-19.outputs.result}}"
+        GRADE-20_RESULTS: "${{steps.grade-20.outputs.result}}"
+      with:
+        runners: grade-01,grade-02,grade-03,grade-04,grade-05,grade-06,grade-07,grade-08,grade-09,grade-10,grade-11,grade-12,grade-13,grade-14,grade-15,grade-16,grade-17,grade-18,grade-19,grade-20
