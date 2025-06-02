@@ -1,0 +1,63 @@
+name: Autograding # Nome do workflow, visível na aba "Actions"
+
+on: [push, workflow_dispatch] # Eventos que disparam o workflow (envio de código ou manual)
+
+permissions: # Permissões necessárias para o workflow
+  checks: write
+  actions: read
+  contents: read
+  # Adicione 'security-events: write' se estiver usando upload de resultados SARIF para Code Scanning
+  # Adicione 'statuses: write' se necessário por alguma action específica
+
+jobs:
+  build: # Nome do job (você pode ter múltiplos jobs)
+    name: Autograding Tests # Nome mais descritivo para o job, visível na interface
+    runs-on: ubuntu-latest # Sistema operacional da máquina virtual que rodará o job
+
+    steps:
+      # 1. Checkout do código do aluno
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configuração do ambiente (exemplo para Python, adapte para sua linguagem)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # Especifique a versão
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pipx install tko
+
+      # 3. AQUI é onde você define o autograding-command-grader
+      - name: Run autograding tests
+        uses: education/autograding-command-grader@v1 # Ou classroom-resources/autograding-command-grader@v1
+        with:
+          # Nome do teste como aparecerá no GitHub Classroom e nos Checks
+          test-name: "Testes Personalizados"
+
+          # Comando para preparar o ambiente de teste (se não feito nos passos anteriores)
+          # Ex: instalar pacotes específicos para o teste
+          setup-command: "" # Pode ser deixado em branco se o setup já foi feito
+
+          # O comando que executa SEU script de teste.
+          # Este script é responsável por rodar os testes e gerar o arquivo JSON de resultados.
+          command: "python run_tests.py --output-json results.json"
+
+          # Tempo máximo (em minutos) que o comando de teste pode rodar
+          timeout: 10 # Padrão é 10 minutos
+
+          # Pontuação máxima possível para este conjunto de testes
+          # O 'autograding-command-grader' usará isso para calcular a proporção de pontos.
+          max-score: 100
+
+          # Opcional: Caminho para o arquivo de resultados JSON se não for o padrão ('results.json')
+          # results-file: "my_custom_results_filename.json"
+
+          # Opcional: Como lidar com STDOUT (saída padrão) e STDERR (saída de erro)
+          # Pode ser 'capture', 'passthrough', ou 'ignore'. 'capture' é útil para incluir no JSON.
+          # stdout-on-failure: 'capture'
+          # stderr-on-failure: 'capture'
+
+# Outros jobs podem ser definidos aqui, se necessário

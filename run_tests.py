@@ -3,6 +3,7 @@
 
 from subprocess import run, PIPE
 import json
+import argparse
 
 class MyTest:
     def __init__(self, test_name: str, max_score: int = 10, partial: bool = True):
@@ -74,13 +75,19 @@ class MyTestList:
         return json.dumps([test.to_dict() for test in self.tests], indent=4)
 
 
-def main():
+def main(output_json: str):
     test_list = MyTestList()
     test_list.add_test("leds", 10)
     test_list.add_test("media", 10)
     test_list.add_test("traficantes", 30)
-    print(test_list.to_json())
+
+    with open(output_json, 'w') as f:
+        f.write(test_list.to_json())
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run tests and generate JSON report")
+    parser.add_argument("--output-json", default="results.json", help="Path to output JSON file")
+    args = parser.parse_args()
+
+    main(args.output_json)
