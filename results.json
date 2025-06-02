@@ -1,7 +1,7 @@
 [
     {
         "test_name": "leds",
-        "output": "@leds => [draft.ts, cases.tio(04)] [S S S S] min:143, lines:28, att:5, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 100%",
+        "output": "@leds => [draft.ts, cases.tio(04)] [S S S S] min:156, lines:28, att:5, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 100%",
         "status": "passed",
         "points_awarded": 10,
         "max_score": 10,
@@ -9,7 +9,7 @@
     },
     {
         "test_name": "media",
-        "output": "@media => [draft.ts, cases.tio(05)] [S S S S S] min:70, lines:9, att:1, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 100%",
+        "output": "@media => [draft.ts, cases.tio(05)] [S S S S S] min:83, lines:9, att:1, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 100%",
         "status": "passed",
         "points_awarded": 10,
         "max_score": 10,
@@ -17,7 +17,7 @@
     },
     {
         "test_name": "traficantes",
-        "output": "@traficantes => [draft.ts, cases.tio(03)] [W W W] min:76, lines:-1, att:0, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 0%",
+        "output": "@traficantes => [draft.ts, cases.tio(03)] [W W W] min:89, lines:-1, att:0, clear:0, fun:0, easy:0, cov:0, app:0, aut:0, 0%",
         "status": "failed",
         "points_awarded": 0,
         "max_score": 30,
