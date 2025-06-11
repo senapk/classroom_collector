@@ -1,0 +1,4 @@
+time:2025-06-11 16:12:07, type:DOWN, key:data
+time:2025-06-11 16:12:20, type:PICK, key:data, e:0
+time:2025-06-11 16:12:23, type:BACK, key:data, e:0
+time:2025-06-11 16:13:03, type:SELF, key:data, c:0, a:6, s:5, clear:0, fun:0, easy:0, e:0
