@@ -1,20 +1,25 @@
 {
-    "name": "Universal Environment",
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pipx && pipx ensurepath && pipx install tko",
-    // Adicionado npm install -g npm@latest para garantir a versão mais recente do npm
-
+  "name": "Python + Go DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12",
+      "installPipx": true
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.22"
+    }
+  },
+  "postCreateCommand": "pipx install tko && go install golang.org/x/tools/gopls@latest",
   "customizations": {
     "vscode": {
       "settings": {
         "files.autoSave": "afterDelay",
-        "files.autoSaveDelay": 1000,
-        "editor.formatOnSave": true,
-        "editor.tabSize": 4
+        "files.autoSaveDelay": 1000
       },
       "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "ms-python.python",
+        "golang.go"
       ]
     }
   }

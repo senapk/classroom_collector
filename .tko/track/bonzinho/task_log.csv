@@ -1,2 +1,24 @@
 time:2025-06-11 08:26:23, type:TEST, key:bonzinho, c:0
 time:2025-06-11 08:26:23, type:SIZE, key:bonzinho, att:1, lines:5
+time:2025-06-11 08:31:51, type:TEST, key:bonzinho, c:0, e:5, att:1, lines:5
+time:2025-06-11 08:31:51, type:SIZE, key:bonzinho, e:5, att:2, lines:23
+time:2025-06-11 08:32:12, type:TEST, key:bonzinho, c:0, e:5, att:2, lines:23
+time:2025-06-11 08:32:12, type:SIZE, key:bonzinho, e:5, att:3, lines:24
+time:2025-06-11 08:32:19, type:TEST, key:bonzinho, c:62, e:5, att:3, lines:24
+time:2025-06-11 08:32:19, type:SIZE, key:bonzinho, e:5, att:4, lines:24
+time:2025-06-11 08:32:25, type:TEST, key:bonzinho, c:100, e:6, att:4, lines:24
+time:2025-06-11 08:32:25, type:SIZE, key:bonzinho, e:6, att:5, lines:24
+time:2025-06-11 09:12:12, type:SELF, key:bonzinho, c:0, a:0, s:0, clear:0, fun:0, easy:0, e:45, att:5, lines:24
+time:2025-06-11 09:12:15, type:PICK, key:bonzinho, e:45, att:5, lines:24
+time:2025-06-11 09:12:16, type:TEST, key:bonzinho, c:100, e:45, att:5, lines:24
+time:2025-06-11 09:12:17, type:BACK, key:bonzinho, e:45, att:5, lines:24
+time:2025-06-11 09:13:45, type:SELF, key:bonzinho, c:100, a:5, s:5, clear:5, fun:5, easy:5, e:47, att:5, lines:24
+time:2025-06-11 10:59:59, type:PICK, key:bonzinho, e:47, att:5, lines:24
+time:2025-06-11 11:00:01, type:TEST, key:bonzinho, c:100, e:47, att:5, lines:24
+time:2025-06-11 11:00:01, type:BACK, key:bonzinho, e:47, att:5, lines:24
+time:2025-06-11 11:00:49, type:SELF, key:bonzinho, c:100, a:4, s:5, clear:0, fun:0, easy:0, e:48, att:5, lines:24
+time:2025-06-11 11:07:50, type:PICK, key:bonzinho, e:55, att:5, lines:24
+time:2025-06-11 11:07:50, type:TEST, key:bonzinho, c:100, e:55, att:5, lines:24
+time:2025-06-11 11:07:51, type:BACK, key:bonzinho, e:55, att:5, lines:24
+time:2025-06-11 11:08:04, type:SELF, key:bonzinho, c:100, a:2, s:3, clear:2, fun:0, easy:4, e:55, att:5, lines:24
+time:2025-06-11 11:08:11, type:SELF, key:bonzinho, c:100, a:2, s:3, clear:2, fun:0, easy:4, e:55, att:5, lines:24
