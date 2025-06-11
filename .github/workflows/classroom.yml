@@ -26,8 +26,9 @@ jobs:
       with:
         test-name: grade-01
         setup-command: ''
-        command: '[ "$(cat .config/awarded.txt)" -gt 15 ] && echo "ok" || echo "fail"'
-        expected-output: 'ok'
+        command: python .config/grade.py check
+        input: '1'
+        expected-output: '1'
         comparison-method: exact
         timeout: 1
         max-score: 1
