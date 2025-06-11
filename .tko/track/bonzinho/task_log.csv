@@ -22,3 +22,5 @@ time:2025-06-11 11:07:50, type:TEST, key:bonzinho, c:100, e:55, att:5, lines:24
 time:2025-06-11 11:07:51, type:BACK, key:bonzinho, e:55, att:5, lines:24
 time:2025-06-11 11:08:04, type:SELF, key:bonzinho, c:100, a:2, s:3, clear:2, fun:0, easy:4, e:55, att:5, lines:24
 time:2025-06-11 11:08:11, type:SELF, key:bonzinho, c:100, a:2, s:3, clear:2, fun:0, easy:4, e:55, att:5, lines:24
+time:2025-06-11 11:15:13, type:TEST, key:bonzinho, c:100, e:62, att:5, lines:24
+time:2025-06-11 11:17:10, type:TEST, key:bonzinho, c:100, e:64, att:5, lines:24
