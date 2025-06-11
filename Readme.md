@@ -1,8 +1,3 @@
----
-level_one: 50
-level_mult: 1.2
----
-
 # Avaliação
 
 ```bash

@@ -1,8 +1,0 @@
-{
-    "patches": [
-        {
-            "label": "2025-06-11_11-15-13",
-            "content": "package main\nimport \"fmt\"\nfunc main() {\n    fmt.Println(\"qxcode\")\n}\n"
-        }
-    ]
-}

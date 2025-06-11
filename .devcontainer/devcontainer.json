@@ -19,7 +19,8 @@
       },
       "extensions": [
         "ms-python.python",
-        "golang.go"
+        "golang.go",
+        "bierner.markdown-preview-github-styles"
       ]
     }
   }
