@@ -1,20 +1,27 @@
 # Avaliação
 
 ```bash
-# Se estiver no codespace, tko e go já estarão instalados.
+# =============================================================
+# Se estiver no codespace, instale as ferramentas necessárias:
+# começe verificando os links remotos
+sudo apt-get update
+# tko
+pipx install tko
+# go
+go install golang.org/x/tools/gopls@latest
+# =============================================================
 # Se estiver no seu computador, atualize o `tko` com o comando 
 pipx upgrade tko
+# =============================================================
 # Você pode abrir o repositório com as questões com o comando
 tko open .
 
 # Se quiser marcar a autoavalição para acompanhar sua nota
 # marque que fez sozinho, mas isso não é obrigatório ou altera a nota obtida.
-
 # Baixe as atividades e vá rodando os testes
 
-# Ao final, marque todos os arquivos para envio
+# Ao final, marque e envie os arquivos para avaliação.
 git add .
-# Salve e envie as alterações para o repositório remoto
 git commit -m "Avaliação"
 git push
 ```

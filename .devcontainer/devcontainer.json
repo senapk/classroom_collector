@@ -1,7 +1,6 @@
 {
   "name": "Universal Environment",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "postCreateCommand": "sudo apt-get update && pipx install tko && go install golang.org/x/tools/gopls@latest",
 
   "customizations": {
     "vscode": {
@@ -12,7 +11,9 @@
       "extensions": [
         "ms-python.python",
         "golang.go",
-        "bierner.markdown-preview-github-styles"
+        "bierner.markdown-preview-github-styles",
+        "usernamehw.errorlens",
+        "jeff-hughes.open-terminal-here"
       ]
     }
   }
