@@ -1,0 +1,27 @@
+{
+  "name": "Python + Go DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12",
+      "installPipx": true
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.22"
+    }
+  },
+  "postCreateCommand": "pipx install tko && go install golang.org/x/tools/gopls@latest",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000
+      },
+      "extensions": [
+        "ms-python.python",
+        "golang.go",
+        "bierner.markdown-preview-github-styles"
+      ]
+    }
+  }
+}
