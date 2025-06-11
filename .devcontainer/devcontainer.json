@@ -1,7 +1,7 @@
 {
     "name": "Universal Environment",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pipx && pipx ensurepath && pipx install tko && npm install -g npm@latest",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pipx && pipx ensurepath && pipx install tko",
     // Adicionado npm install -g npm@latest para garantir a versão mais recente do npm
 
   "customizations": {
