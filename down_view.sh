@@ -25,4 +25,4 @@ outfile="${repo_clean//\//-}.txt"
 gh run view "$run_id" --repo "$REPO" --log > "$outfile" 2>/dev/null
 
 # filter $outfile keeping only lines with text "Run setup script" and remove the first 3 cols using \t separator, depois cortar mais 10 caracteres
-grep "Run setup script" "$outfile" | cut -f 3- | cut -c 11- > "$OUTDIR/$outfile"
+grep "Run setup script" "$outfile" | cut -f 3- | cut -c 11- > "$outfile"

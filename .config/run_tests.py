@@ -79,10 +79,10 @@ class Runner:
 
     @staticmethod
     def main(args: argparse.Namespace):
+        print("=================================== [TKO RUN] ===================================", flush=True)
         config = configparser.ConfigParser()
         config.read(Problem.config_file)
         test_list = Runner()
-        print("=================================== [TKO RUN] ===================================")
         for section in config.sections():
             label = section
             value = config.getint(section, Problem.tag_value, fallback=1)
