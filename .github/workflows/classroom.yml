@@ -14,12 +14,22 @@ jobs:
       uses: actions/checkout@v4
     - name: Run setup script
       run: pipx install tko && python .config/grade.py run
+    - name: Upload evaluation report
+      uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
+      with:
+        name: total-grade-file
+        path: .config/awarded.txt
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Load evaluation report
+      uses: actions/download-artifact@v4
+      with:
+        name: total-grade-file # Deve ser o mesmo nome do artefato que foi UPLOADADO
+        path: .config/awarded.txt
     - name: grade-01
       id: grade-01
       uses: classroom-resources/autograding-io-grader@v1

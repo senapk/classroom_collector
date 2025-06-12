@@ -1,26 +1,35 @@
 # Avaliação
 
 ```bash
-# =============================================================
-# Se estiver no codespace, instale as ferramentas necessárias:
-# começe verificando os links remotos
-sudo apt-get update
+# ==================================================================
+# ===================  CODESPACE SETUP  ============================
+# ==================================================================
 # tko
-pipx install tko
-# go
+sudo apt-get update && pipx install tko
+# se for utilizar go
 go install golang.org/x/tools/gopls@latest
-# =============================================================
-# Se estiver no seu computador, atualize o `tko` com o comando 
+# se for utilizar typescript
+npm install typescript typescript-language-server esbuild readline-sync ts-node
+# ==================================================================
+# =====================  LOCAL SETUP  ==============================
+# ==================================================================
+# Se estiver no seu computador e já tiver o setup para fazer o clone
+# local com as ferramentas de desenvolvimento e compiladores, lembre
+# de atualizar o tko antes de começar a avaliação. 
 pipx upgrade tko
-# =============================================================
-# Você pode abrir o repositório com as questões com o comando
+# ==================================================================
+# ==================  FAZENDO A AVALIAÇÃO  =========================
+# ==================================================================
+# abra o tko na raiz do repositório que você acabou de clonar
 tko open .
 
-# Se quiser marcar a autoavalição para acompanhar sua nota
-# marque que fez sozinho, mas isso não é obrigatório ou altera a nota obtida.
-# Baixe as atividades e vá rodando os testes
+# Baixe as atividades e rode os testes.
+# Se quiser marcar a autoavalição para acompanhar a sua nota
+# marque que fez sozinho, mas isso não é obrigatório ou muda a nota.
 
-# Ao final, marque e envie os arquivos para avaliação.
+# ==================================================================
+# =================  ENVIANDO A AVALIAÇÃO  =========================
+# ==================================================================
 git add .
 git commit -m "Avaliação"
 git push
