@@ -1,7 +1,6 @@
 name: Autograding Tests
-'on':
+on:
 - push
-- repository_dispatch
 permissions:
   checks: write
   actions: read
@@ -31,11 +30,10 @@ jobs:
       with:
         name: awarded # Deve ser o mesmo nome do artefato que foi UPLOADADO
         path: ~/ # Local onde o artefato será baixado
-    - name: Unzip awarded.txt
+    - name: Unzip awarded.zip
       run: |
-        ls -R ~/awarded/
-        unzip ~/awarded/awarded.zip -d ~/awarded/
-        cat ~/awarded/awarded.txt
+        unzip ~/awarded.zip -d ~/.config
+        cat ~/.config/awarded.txt
     - name: grade-01
       id: grade-01
       uses: classroom-resources/autograding-io-grader@v1
