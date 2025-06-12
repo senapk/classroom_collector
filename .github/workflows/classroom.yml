@@ -29,15 +29,14 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: awarded # Deve ser o mesmo nome do artefato que foi UPLOADADO
-        path: ~/.config # Local onde o artefato será baixado
+        path: ~/ # Local onde o artefato será baixado
     - name: grade-01
       id: grade-01
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: grade-01
         setup-command: ''
-        command: python .config/grade.py check
-        input: '1'
+        command: '{ [ $(<awarded.txt) -gt 15 ] && echo "1"; } || echo "0"'
         expected-output: '1'
         comparison-method: exact
         timeout: 1
@@ -48,7 +47,7 @@ jobs:
       with:
         test-name: grade-02
         setup-command: ''
-        command: python .config/grade.py check
+        command: cat awarded.txt
         input: '2'
         expected-output: '1'
         comparison-method: exact
