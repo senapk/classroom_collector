@@ -1,0 +1,238 @@
+name: Autograding Tests
+on:
+- push
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  setup-environment: # Novo job de configuração
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Run setup script
+      run: pipx install tko && python .config/grade.py test -o ~/awarded.txt
+    - name: Upload evaluation report
+      uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
+      with:
+        name: awarded
+        path: ~/awarded.txt
+  run-autograding-tests:
+    needs: setup-environment
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Load evaluation report
+      uses: actions/download-artifact@v4
+      with:
+        name: awarded # Deve ser o mesmo nome do artefato que foi UPLOADADO
+        path: ~/ # Local onde o artefato será baixado
+    - name: G01
+      id: G01
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G01
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 1 ]'
+        timeout: 5
+        max-score: 1
+    - name: G02
+      id: G02
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G02
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 2 ]'
+        timeout: 5
+        max-score: 1
+    - name: G03
+      id: G03
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G03
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 3 ]'
+        timeout: 5
+        max-score: 1
+    - name: G04
+      id: G04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G04
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 4 ]'
+        timeout: 5
+        max-score: 1
+    - name: G05
+      id: G05
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G05
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 5 ]'
+        timeout: 5
+        max-score: 1
+    - name: G06
+      id: G06
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G06
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 6 ]'
+        timeout: 5
+        max-score: 1
+    - name: G07
+      id: G07
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G07
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 7 ]'
+        timeout: 5
+        max-score: 1
+    - name: G08
+      id: G08
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G08
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 8 ]'
+        timeout: 5
+        max-score: 1
+    - name: G09
+      id: G09
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G09
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 9 ]'
+        timeout: 5
+        max-score: 1
+    - name: G10
+      id: G10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G10
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 10 ]'
+        timeout: 5
+        max-score: 1
+    - name: G11
+      id: G11
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G11
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 11 ]'
+        timeout: 5
+        max-score: 1
+    - name: G12
+      id: G12
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G12
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 12 ]'
+        timeout: 5
+        max-score: 1
+    - name: G13
+      id: G13
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G13
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 13 ]'
+        timeout: 5
+        max-score: 1
+    - name: G14
+      id: G14
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G14
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 14 ]'
+        timeout: 5
+        max-score: 1
+    - name: G15
+      id: G15
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G15
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 15 ]'
+        timeout: 5
+        max-score: 1
+    - name: G16
+      id: G16
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G16
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 16 ]'
+        timeout: 5
+        max-score: 1
+    - name: G17
+      id: G17
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G17
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 17 ]'
+        timeout: 5
+        max-score: 1
+    - name: G18
+      id: G18
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G18
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 18 ]'
+        timeout: 5
+        max-score: 1
+    - name: G19
+      id: G19
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G19
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 19 ]'
+        timeout: 5
+        max-score: 1
+    - name: G20
+      id: G20
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: G20
+        setup-command: ''
+        command: '[ "$(cat ~/awarded.txt)" -ge 20 ]'
+        timeout: 5
+        max-score: 1
+    
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        G01_RESULTS: "${{steps.G01.outputs.result}}"
+        G02_RESULTS: "${{steps.G02.outputs.result}}"
+        G03_RESULTS: "${{steps.G03.outputs.result}}"
+        G04_RESULTS: "${{steps.G04.outputs.result}}"
+        G05_RESULTS: "${{steps.G05.outputs.result}}"
+        G06_RESULTS: "${{steps.G06.outputs.result}}"
+        G07_RESULTS: "${{steps.G07.outputs.result}}"
+        G08_RESULTS: "${{steps.G08.outputs.result}}"
+        G09_RESULTS: "${{steps.G09.outputs.result}}"
+        G10_RESULTS: "${{steps.G10.outputs.result}}"
+        G11_RESULTS: "${{steps.G11.outputs.result}}"
+        G12_RESULTS: "${{steps.G12.outputs.result}}"
+        G13_RESULTS: "${{steps.G13.outputs.result}}"
+        G14_RESULTS: "${{steps.G14.outputs.result}}"
+        G15_RESULTS: "${{steps.G15.outputs.result}}"
+        G16_RESULTS: "${{steps.G16.outputs.result}}"
+        G17_RESULTS: "${{steps.G17.outputs.result}}"
+        G18_RESULTS: "${{steps.G18.outputs.result}}"
+        G19_RESULTS: "${{steps.G19.outputs.result}}"
+        G20_RESULTS: "${{steps.G20.outputs.result}}"
+      with:
+        runners: G01,G02,G03,G04,G05,G06,G07,G08,G09,G10,G11,G12,G13,G14,G15,G16,G17,G18,G19,G20
