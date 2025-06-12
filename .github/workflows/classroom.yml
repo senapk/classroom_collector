@@ -29,11 +29,15 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: awarded # Deve ser o mesmo nome do artefato que foi UPLOADADO
-        path: ~/awarded.zip # Local onde o artefato será baixado
-    - name: Unzip awarded.zip
+        path: ~/ # Local onde o artefato será baixado
+    - name: Unzip awarded.txt
       run: |
-        unzip ~/awarded.zip -d ~/.config
-        cat ~/.config/awarded.txt
+        # Primeiro, liste para confirmar a estrutura (útil para depuração)
+        ls -R ~/awarded/
+        # Agora, descompacte o arquivo zip que estará dentro da pasta 'awarded'
+        unzip ~/awarded/awarded.zip -d ~/awarded/
+        # Verifique se o arquivo awarded.txt foi descompactado
+        cat ~/awarded/awarded.txt
     - name: grade-01
       id: grade-01
       uses: classroom-resources/autograding-io-grader@v1
