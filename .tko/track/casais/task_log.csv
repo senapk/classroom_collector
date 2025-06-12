@@ -1,3 +1,10 @@
 time:2025-06-11 16:12:11, type:DOWN, key:casais
 time:2025-06-11 16:12:12, type:PICK, key:casais, e:0
 time:2025-06-11 16:12:13, type:BACK, key:casais, e:0
+time:2025-06-12 09:14:21, type:TEST, key:casais, c:0, e:0
+time:2025-06-12 09:14:21, type:SIZE, key:casais, e:0, att:1, lines:5
+time:2025-06-12 09:14:44, type:TEST, key:casais, c:0, e:0, att:1, lines:5
+time:2025-06-12 09:17:06, type:TEST, key:casais, c:0, e:2, att:1, lines:5
+time:2025-06-12 09:17:33, type:TEST, key:casais, c:0, e:3, att:1, lines:5
+time:2025-06-12 09:18:51, type:TEST, key:casais, c:0, e:4, att:1, lines:5
+time:2025-06-12 09:21:30, type:TEST, key:casais, c:0, e:7, att:1, lines:5

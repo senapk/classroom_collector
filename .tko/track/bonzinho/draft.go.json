@@ -1,0 +1,16 @@
+{
+    "patches": [
+        {
+            "label": "2025-06-12_09-14-21",
+            "content": "@@ -6,17 +6,16 @@\n ge main%0A\n-%0A\n import %22\n@@ -19,17 +19,16 @@\n t %22fmt%22%0A\n-%0A\n func mai\n@@ -37,334 +37,32 @@\n ) %7B%0A\n-%09var a, b, c, trab float64%0A%09var menor, media float64%0A%0A%09fmt.Scanf(%22%25f %25f %25f %25f%22, &a, &b, &c, &trab)%0A%0A%09menor = a%0A%09if b %3C menor %7B%0A%09%09menor = b%0A%09%7D%0A%09if c %3C menor %7B%0A%09%09menor = c%0A%09%7D%0A%0A%09media = (a + b + c + trab - menor) / 3%0A%0A%09if media %3E= 7 %7B%0A%09%09fmt.Printf(%22Aprovado com %25.1f%5Cn%22, media)%0A%09%7D else %7B%0A%09%09fmt.Printf(%22Final com %25.1f%5Cn%22, media)%0A%09%7D\n+    fmt.Println(%22qxcode%22)\n %0A%7D%0A\n"
+        },
+        {
+            "label": "2025-06-12_09-18-51",
+            "content": "@@ -107,18 +107,15 @@\n (%22%25f\n-%5Cn%25f%5Cn%25f%5Cn\n+ %25f %25f \n %25f%22,\n"
+        },
+        {
+            "label": "2025-06-12_09-21-13",
+            "content": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tvar a, b, c, trab float64\n\tvar menor, media float64\n\n\tfmt.Scanf(\"%f\\n%f\\n%f\\n%f\", &a, &b, &c, &trab)\n\n\tmenor = a\n\tif b < menor {\n\t\tmenor = b\n\t}\n\tif c < menor {\n\t\tmenor = c\n\t}\n\n\tmedia = (a + b + c + trab - menor) / 3\n\n\tif media >= 7 {\n\t\tfmt.Printf(\"Aprovado com %.1f\\n\", media)\n\t} else {\n\t\tfmt.Printf(\"Final com %.1f\\n\", media)\n\t}\n}\n"
+        }
+    ]
+}

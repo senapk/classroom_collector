@@ -10,7 +10,7 @@ class Const:
     ansi_green = "\033[92m"
     ansi_reset = "\033[0m"
     awarded_file = ".config/awarded.txt"
-    result_file = ".config/result.txt"
+    temp_result_file = ".config/result.txt" # Temporary file to collect results from tko eval command
 
 class Problem:
     config_file = ".config/config.ini"
@@ -38,18 +38,18 @@ class MyTest:
 
     
     def run(self):
-        grade_file = Const.result_file
+        temp_file = Const.temp_result_file
         extra: list[str] = []
         if self.param:
             extra = self.param.split(" ")
-        result = run(["tko", "eval"] + extra + ['-r', grade_file, f"src/{self.label}"], stderr=PIPE, text=True)
+        result = run(["tko", "eval"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
         if result.returncode != 0:
            print(result.stderr)
         if result.returncode == 0:
-            if os.path.isfile(grade_file):
-                percent = open(grade_file, "r").read().splitlines()[0].strip()
+            if os.path.isfile(temp_file):
+                percent = open(temp_file, "r").read().splitlines()[0].strip()
                 self.set_percentage(percent)
-                os.remove(grade_file)
+                os.remove(temp_file)
         return self
 
 
@@ -79,7 +79,7 @@ class Runner:
         return round(grade)
 
     @staticmethod
-    def main(_: argparse.Namespace):
+    def main(args: argparse.Namespace):
         config = configparser.ConfigParser()
         config.read(Problem.config_file)
         test_list = Runner()
@@ -91,10 +91,14 @@ class Runner:
             test = MyTest(label=label, value=value, param=param, partial=partial)
             test_list.add_and_run_test(test)
 
+        output_file = args.output if args.output else Const.awarded_file
         awarded = test_list.calc_grade()
-        with open(Const.awarded_file, "w") as f:
-            print(f"\nFinal grade: {Const.ansi_green}{awarded}%{Const.ansi_reset}")
+        with open(output_file, "w") as f:
+            print(f"\nSaving final grade in file {output_file}")
             f.write(str(awarded))
+        with open(output_file, "r") as f:
+            awarded = int(f.read().strip())
+            print(f"Grade awarded: {Const.ansi_green}{awarded}%{Const.ansi_reset}")
 
 class Checker:
     @staticmethod
@@ -127,7 +131,8 @@ class Checker:
 def main():
     parser = argparse.ArgumentParser(description="Run tests and calculate grade.")
     subparsers = parser.add_subparsers(dest="commands", required=True)
-    parser_run = subparsers.add_parser("run", help="Run the tests and calculate the grade.")
+    parser_run = subparsers.add_parser("test", help="Run the tests and calculate the grade.")
+    parser_run.add_argument("--output", "-o", type=str, help="Output file for the awarded grade.")
     parser_run.set_defaults(func=Runner.main)
     parser_check = subparsers.add_parser("check", help="Check if the grade is awarded.")
     parser_check.add_argument("request", type=int, nargs='?', default=None, help="Request grade to check.")
