@@ -17,7 +17,7 @@ jobs:
     - name: Upload evaluation report
       uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
       with:
-        name: awarded.txt
+        name: awarded
         path: ~/awarded.txt
   run-autograding-tests:
     runs-on: ubuntu-latest
@@ -28,8 +28,12 @@ jobs:
     - name: Load evaluation report
       uses: actions/download-artifact@v4
       with:
-        name: awarded.txt # Deve ser o mesmo nome do artefato que foi UPLOADADO
-        path: ~/awarded.txt
+        name: awarded.zip # Deve ser o mesmo nome do artefato que foi UPLOADADO
+        path: ~/awarded.zip # Local onde o artefato será baixado
+    - name: Unzip awarded.zip
+      run: |
+        unzip ~/awarded.zip -d ~/.config
+        cat ~/.config/awarded.txt
     - name: grade-01
       id: grade-01
       uses: classroom-resources/autograding-io-grader@v1
