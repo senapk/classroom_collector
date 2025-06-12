@@ -47,7 +47,9 @@ jobs:
           timeout: 5
           max-score: 1
       - name: Save result
-        run: echo "G$(printf "%02d" ${{ matrix.grade }})_RESULTS=${{ steps.grade.outputs.result }}" >> $GITHUB_ENV
+        run: |
+          VAR_NAME=G$(printf "%02d" ${{ matrix.grade }})_RESULTS
+          echo "$VAR_NAME=${{ steps.grade.outputs.result }}" >> $GITHUB_ENV
 
   report:
     needs: run-autograding-tests
