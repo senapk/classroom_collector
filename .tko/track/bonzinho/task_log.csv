@@ -9,3 +9,5 @@ time:2025-06-12 09:19:17, type:TEST, key:bonzinho, c:0, e:4, att:2, lines:26
 time:2025-06-12 09:21:13, type:TEST, key:bonzinho, c:100, e:6, att:2, lines:26
 time:2025-06-12 09:21:13, type:SIZE, key:bonzinho, e:6, att:3, lines:26
 time:2025-06-12 09:21:29, type:TEST, key:bonzinho, c:100, e:7, att:3, lines:26
+time:2025-06-12 09:32:56, type:TEST, key:bonzinho, c:100, e:18, att:3, lines:26
+time:2025-06-12 09:33:02, type:TEST, key:bonzinho, c:100, e:18, att:3, lines:26

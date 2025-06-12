@@ -42,7 +42,7 @@ class MyTest:
         extra: list[str] = []
         if self.param:
             extra = self.param.split(" ")
-        result = run(["tko", "eval"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
+        result = run(["tko", "eval", "--timeout", "4"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
         if result.returncode != 0:
            print(result.stderr)
         if result.returncode == 0:
