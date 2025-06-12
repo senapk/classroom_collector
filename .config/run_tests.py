@@ -64,7 +64,6 @@ class Runner:
         total_weight = sum(test.value for test in self.tests)
         max_label_len = max(len(test.label) for test in self.tests) + 1
         grade: float = 0
-        print("")
         print(f"{'TestCases':<{max_label_len}}| passed | value | earned")
         sep = f"{'-' * max_label_len}|--------|-------|-------"
         print(sep)
@@ -79,7 +78,7 @@ class Runner:
 
     @staticmethod
     def main(args: argparse.Namespace):
-        print("=================================== [TKO RUN] ===================================", flush=True)
+        print("=================================== [TKO RUNNING] ===================================", flush=True)
         config = configparser.ConfigParser()
         config.read(Problem.config_file)
         test_list = Runner()
@@ -90,12 +89,13 @@ class Runner:
             partial = config.getboolean(section, Problem.tag_partial, fallback=True)
             test = MyTest(label=label, value=value, param=param, partial=partial)
             test_list.add_and_run_test(test)
-        print("=================================== [TKO END] ===================================")
+        print("=================================== [TKO GRADING] ===================================", flush=True)
 
         output_file = args.output if args.output else Const.awarded_file
         awarded = test_list.calc_grade()
         with open(output_file, "w") as f:
             f.write(str(awarded))
+        print("=================================== [TKO LEAVING] ===================================", flush=True)
 
 def main():
     parser = argparse.ArgumentParser(description="Run tests and calculate grade.")
