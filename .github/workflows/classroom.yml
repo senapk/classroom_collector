@@ -20,6 +20,7 @@ jobs:
         name: awarded
         path: ~/awarded.txt
   run-autograding-tests:
+    needs: setup-environment
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
@@ -32,11 +33,8 @@ jobs:
         path: ~/ # Local onde o artefato será baixado
     - name: Unzip awarded.txt
       run: |
-        # Primeiro, liste para confirmar a estrutura (útil para depuração)
         ls -R ~/awarded/
-        # Agora, descompacte o arquivo zip que estará dentro da pasta 'awarded'
         unzip ~/awarded/awarded.zip -d ~/awarded/
-        # Verifique se o arquivo awarded.txt foi descompactado
         cat ~/awarded/awarded.txt
     - name: grade-01
       id: grade-01
