@@ -56,7 +56,6 @@ class MyTest:
 class Runner:
     def __init__(self):
         self.tests: list[MyTest] = []
-
     def add_and_run_test(self, test: MyTest):
         self.tests.append(test)
         test.run()
@@ -83,6 +82,7 @@ class Runner:
         config = configparser.ConfigParser()
         config.read(Problem.config_file)
         test_list = Runner()
+        print("=================================== [TKO RUN] ===================================")
         for section in config.sections():
             label = section
             value = config.getint(section, Problem.tag_value, fallback=1)
@@ -90,59 +90,19 @@ class Runner:
             partial = config.getboolean(section, Problem.tag_partial, fallback=True)
             test = MyTest(label=label, value=value, param=param, partial=partial)
             test_list.add_and_run_test(test)
+        print("=================================== [TKO END] ===================================")
 
         output_file = args.output if args.output else Const.awarded_file
         awarded = test_list.calc_grade()
         with open(output_file, "w") as f:
-            print(f"\nSaving final grade in file {output_file}")
             f.write(str(awarded))
-        with open(output_file, "r") as f:
-            awarded = int(f.read().strip())
-            print(f"Grade awarded: {Const.ansi_green}{awarded}%{Const.ansi_reset}")
-
-class Checker:
-    @staticmethod
-    def load_awarded():
-        awarded = 0
-        if os.path.exists(Const.awarded_file):
-            try:
-                awarded = int(open(Const.awarded_file, "r").read().strip())
-            except ValueError:
-                pass
-        return awarded
-
-    @staticmethod
-    def load_request(request: int | None):
-        if request is None:
-            request = int(input())
-        return request
-
-    @staticmethod
-    def main(args: argparse.Namespace):
-        awarded = Checker.load_awarded()
-        request = Checker.load_request(args.request)
-
-        if request <= awarded:
-            print("1")
-        else:
-            print("0")
-
 
 def main():
     parser = argparse.ArgumentParser(description="Run tests and calculate grade.")
-    subparsers = parser.add_subparsers(dest="commands", required=True)
-    parser_run = subparsers.add_parser("test", help="Run the tests and calculate the grade.")
-    parser_run.add_argument("--output", "-o", type=str, help="Output file for the awarded grade.")
-    parser_run.set_defaults(func=Runner.main)
-    parser_check = subparsers.add_parser("check", help="Check if the grade is awarded.")
-    parser_check.add_argument("request", type=int, nargs='?', default=None, help="Request grade to check.")
-    parser_check.set_defaults(func=Checker.main)
-    args = parser.parse_args()
-    if hasattr(args, 'func'):
-        args.func(args)
-    else:
-        parser.print_help()
+    parser.add_argument("--output", "-o", type=str, help="Output file for the awarded grade.")
 
+    args = parser.parse_args()
+    Runner.main(args)
 
 if __name__ == "__main__":
     main()
