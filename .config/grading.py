@@ -42,6 +42,7 @@ class MyTest:
         extra: list[str] = []
         if self.param:
             extra = self.param.split(" ")
+        running_prefix()
         result = run(["tko", "eval", "--timeout", "30"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
         if result.returncode != 0:
            print(result.stderr)
@@ -64,21 +65,25 @@ class Runner:
         total_weight = sum(test.value for test in self.tests)
         max_label_len = max(len(test.label) for test in self.tests) + 1
         grade: float = 0
+        grading_prefix()
         print(f"{'TestCases':<{max_label_len}}| passed | value | earned")
         sep = f"{'-' * max_label_len}|--------|-------|-------"
+        grading_prefix()
         print(sep)
         for test in self.tests:
             test.value = test.value * 100 // total_weight
             awarded = test.awarded * test.value // 100
+            grading_prefix()
             print(f"{test.label.ljust(max_label_len)}|   {round(test.awarded):3d}% |  {round(test.value):3d}% |   {round(awarded):3d}%")
             grade += awarded
+        grading_prefix()
         print(sep)
+        grading_prefix()
         print(f"{'Total':<{max_label_len}}|        |  100% |    {Const.ansi_green}{round(grade):3d}%{Const.ansi_reset}")
         return round(grade)
 
     @staticmethod
     def main(args: argparse.Namespace):
-        print("=================================== [TKO RUNNING] ===================================", flush=True)
         config = configparser.ConfigParser()
         config.read(Problem.config_file)
         test_list = Runner()
@@ -89,13 +94,19 @@ class Runner:
             partial = config.getboolean(section, Problem.tag_partial, fallback=True)
             test = MyTest(label=label, value=value, param=param, partial=partial)
             test_list.add_and_run_test(test)
-        print("=================================== [TKO GRADING] ===================================", flush=True)
 
         output_file = args.output if args.output else Const.awarded_file
         awarded = test_list.calc_grade()
         with open(output_file, "w") as f:
             f.write(str(awarded))
-        print("=================================== [TKO LEAVING] ===================================", flush=True)
+
+def running_prefix():
+    print("[TKO RUNNING] ", flush=True, end='')
+
+def grading_prefix():
+    print("[TKO GRADING] ", flush=True, end='')
+
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run tests and calculate grade.")

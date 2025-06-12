@@ -21,8 +21,6 @@ fi
 # outfile is REPO with .txt in the end
 repo_clean="${REPO#https://github.com/}"
 outfile="${repo_clean//\//-}.txt"
+filtered="$outfile.filtered.txt"
 
-gh run view "$run_id" --repo "$REPO" --log > "$outfile" 2>/dev/null
-
-# filter $outfile keeping only lines with text "Run setup script" and remove the first 3 cols using \t separator, depois cortar mais 10 caracteres
-grep "Run setup script" "$outfile" | cut -f 3- | cut -c 11- > "$outfile"
+gh run view "$run_id" --repo "$REPO" --log | grep "[TKO" | cut -f 3- | cut -c 30- > "$outfile" 2>/dev/null
