@@ -32,6 +32,7 @@ jobs:
         path: ~/ # Local onde o artefato será baixado
     - name: Unzip awarded.zip
       run: |
+        ls ~
         unzip ~/awarded.zip -d ~/.config
         cat ~/.config/awarded.txt
     - name: grade-01
