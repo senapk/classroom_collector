@@ -21,6 +21,11 @@ fi
 # outfile is REPO with .txt in the end
 repo_clean="${REPO#https://github.com/}"
 outfile="${repo_clean//\//-}.txt"
-filtered="$outfile.filtered.txt"
+filtered1="$outfile.filtered1.txt"
+filtered2="$outfile.filtered2.txt"
 
-gh run view "$run_id" --repo "$REPO" --log | grep "[TKO" | cut -f 3- | cut -c 30- > "$outfile" 2>/dev/null
+gh run view "$run_id" --repo "$REPO" --log > "$outfile" 2>/dev/null
+cat "$outfile" | sed -r "s/\x1B\[[0-9;]*[mK]//g" | grep "\[TKO" | cut -f 3- | cut -c 44- > "$filtered1"
+
+# pega as linhas que terminam com "%"
+cat "$outfile" | sed -r "s/\x1B\[[0-9;]*[mK]//g" | grep  "%$" | cut -f 3- | cut -c 30- > "$filtered2"

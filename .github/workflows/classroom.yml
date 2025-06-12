@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Run setup script
-      run: pipx install tko && python .config/grading.py -o ~/awarded.txt
+      run: pipx install tko && python .github/scripts/grading.py -o ~/awarded.txt
     - name: Upload evaluation report
       uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
       with:

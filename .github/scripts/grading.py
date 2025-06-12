@@ -5,11 +5,12 @@ from subprocess import run, PIPE
 import os
 import configparser
 import argparse
+import tempfile
 
 class Const:
     ansi_green = "\033[92m"
     ansi_reset = "\033[0m"
-    awarded_file = ".config/awarded.txt"
+    awarded_file = tempfile.gettempdir() + "/awarded.txt"  # File to store the awarded grade
     temp_result_file = ".config/result.txt" # Temporary file to collect results from tko eval command
 
 class Problem:
@@ -43,7 +44,7 @@ class MyTest:
         if self.param:
             extra = self.param.split(" ")
         running_prefix()
-        result = run(["tko", "eval", "--timeout", "30"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
+        result = run(["tko", "eval", "--timeout", "30", "--none"] + extra + ['-r', temp_file, f"src/{self.label}"], stderr=PIPE, text=True)
         if result.returncode != 0:
            print(result.stderr)
         if result.returncode == 0:
