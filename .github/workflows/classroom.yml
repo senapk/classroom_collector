@@ -14,9 +14,9 @@ jobs:
     # - name: Run setup script
     #   run: pipx install tko && feno grading --readme Readme.md -o ~/awarded.txt
     - name: Run setup script
-      run: ls -la && tar -czvf tko.tgz ~/.tko
-    - name: Upload MetaData
+      run: ls -la .tko && tar -czvf tko.tgz .tko
+    - name: Upload tko.tgz
       uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
       with:
         name: logs
-        path: ~/tko.tgz
+        path: tko.tgz
