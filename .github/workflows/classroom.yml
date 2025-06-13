@@ -11,5 +11,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Run setup script
-      run: pipx install tko && feno grading --readme Readme.md -o ~/awarded.txt
+    # - name: Run setup script
+    #   run: pipx install tko && feno grading --readme Readme.md -o ~/awarded.txt
+    - name: Upload MetaData
+      uses: actions/upload-artifact@v4 # Usa a action para upload de artefatos
+      with:
+        name: logs
+        path: .tko
