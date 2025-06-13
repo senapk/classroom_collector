@@ -5,7 +5,6 @@ import re
 import argparse
 import os
 import csv
-from openpyxl import Workbook
 
 def remover_ansi(texto: str):
     # Remove códigos ANSI de cores
@@ -126,7 +125,7 @@ def format_sheet(sheet: list[list[str]]) -> list[list[str]]:
 
     for c in range(nc):
         for l in range(nl):
-            sheet[l][c] = sheet[l][c].strip()
+            sheet[l][c] = sheet[l][c].strip().replace(":000", ":   ").replace(" 000%", "   %")
 
     for c in range(nc):
         max_len = 0
@@ -139,18 +138,57 @@ def format_sheet(sheet: list[list[str]]) -> list[list[str]]:
                 sheet[l][c] = sheet[l][c].rjust(max_len)
     return sheet
 
+def save_as_excel(sheet: list[list[str]], filename: str):
+    try:
+        from openpyxl import Workbook
+    except ImportError:
+        print("⚠️  O módulo 'openpyxl' não está instalado. Instale-o com 'pip install openpyxl'.")
+        sys.exit(1)
+
+    from openpyxl import Workbook
+    wb = Workbook()
+    ws = wb.active
+    if ws is None:
+        print("⚠️  Não foi possível criar a planilha Excel.")
+        sys.exit(1)
+    for row in sheet:
+        ws.append(row)
+    # freeze the first row and first column
+    ws.freeze_panes = "B2"
+    # set the column widths
+    for col in range(len(sheet[0])):
+        max_length = max(len(str(row[col])) for row in sheet)
+        ws.column_dimensions[chr(65 + col)].width = max_length + 2
+    # align all cells to right
+    from openpyxl.styles import Alignment
+    for row in ws.iter_rows(min_row=2, max_col=len(sheet[0]), max_row=len(sheet)):
+        for cell in row:
+            cell.alignment = Alignment(horizontal="right")
+    wb.save(filename)
+    print(f"✅ Resultados salvos em {filename}")
+
+def save_as_csv(sheet: list[list[str]], filename: str):
+    with open(filename, "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        for line in sheet:
+            writer.writerow(line)
+        print(f"✅ Resultados salvos em {filename}")
+
 def main():
     parser = argparse.ArgumentParser(description="Baixa logs de execução do GitHub Actions")
     parser.add_argument("--repo", type=str, nargs="*", help="Links dos repositórios a serem baixados")
     parser.add_argument("--task", type=str, nargs=2, required=False, metavar=("ORG", "TASK"), help="Baixar todos os logs dessa tarefa da organização")
+    parser.add_argument("--excel", action="store_true", help="Salvar os resultados em formato Excel (XLSX) ao invés de CSV")
     args = parser.parse_args()
 
     if not args.repo and not args.task:
         print("⚠️  Nenhum repositório ou tarefa fornecido. Use --repo <repo1> <repo2> ... ou --task <org> <task>")
         sys.exit(1)
+    
     if args.repo:
         for repo in args.repo:
             down_single(repo)
+
     if args.task:
         org = args.task[0]
         task = args.task[1]
@@ -168,10 +206,10 @@ def main():
 
         sheet = format_sheet(sheet)
 
-        with open(f"{task}.csv", "w", newline="", encoding="utf-8") as csvfile:
-            writer = csv.writer(csvfile)
-            for line in sheet:
-                writer.writerow(line)
+        if args.excel:
+            save_as_excel(sheet, f"{task}.xlsx")
+        else:
+            save_as_csv(sheet, f"{task}.csv")
 
 if __name__ == "__main__":
     main()
