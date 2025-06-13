@@ -1,0 +1,14 @@
+[TKO RUNNING] @data           => [draft.go, cases.tio(06)] [S S S S S S] min:74, lines:44, att:3, 100%
+[TKO RUNNING] @bonzinho       => [draft.go, cases.tio(08)] [E U U U U U U U] min:75, lines:12, att:2, 0%
+[TKO RUNNING] @lotado         => [draft.go, cases.tio(03)] [W W W] min:0, lines:-1, att:0, 0%
+[TKO RUNNING] @casais         => [draft.go, cases.tio(04)] [W W W W] min:0, lines:-1, att:0, 0%
+[TKO RUNNING] @parkour        => [draft.go, cases.tio(04)] [W W W W] min:0, lines:-1, att:0, 0%
+[TKO GRADING] TestCases| passed | value | earned
+[TKO GRADING] ---------|--------|-------|-------
+[TKO GRADING] data     |   100% |    9% |     9%
+[TKO GRADING] bonzinho |     0% |   18% |     0%
+[TKO GRADING] lotado   |     0% |   18% |     0%
+[TKO GRADING] casais   |     0% |   27% |     0%
+[TKO GRADING] parkour  |     0% |   27% |     0%
+[TKO GRADING] ---------|--------|-------|-------
+[TKO GRADING] Total    |        |  100% |      9%

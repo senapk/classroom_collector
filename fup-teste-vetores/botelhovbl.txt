@@ -1,0 +1,14 @@
+[TKO RUNNING] 
+[TKO RUNNING] 
+[TKO RUNNING] 
+[TKO RUNNING] 
+[TKO RUNNING] 
+[TKO GRADING] TestCases| passed | value | earned
+[TKO GRADING] ---------|--------|-------|-------
+[TKO GRADING] data     |     0% |    9% |     0%
+[TKO GRADING] bonzinho |     0% |   18% |     0%
+[TKO GRADING] lotado   |     0% |   18% |     0%
+[TKO GRADING] casais   |     0% |   27% |     0%
+[TKO GRADING] parkour  |     0% |   27% |     0%
+[TKO GRADING] ---------|--------|-------|-------
+[TKO GRADING] Total    |        |  100% |      0%
